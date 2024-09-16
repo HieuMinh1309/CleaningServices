@@ -1,5 +1,7 @@
 package pack.models;
 
+import java.sql.Date;
+
 public class User {
 	private int id;
 	private String username;
@@ -8,12 +10,12 @@ public class User {
 	private String phone;
 	private String address;
 	private String images;
-	private String createDate;
+	private Date createDate;
 	
 	public User() {}
 
 	public User(int id, String username, String password, String email, String phone, String address, String images,
-			String createDate) {
+	Date createDate) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -81,12 +83,11 @@ public class User {
 		this.images = images;
 	}
 
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
 }

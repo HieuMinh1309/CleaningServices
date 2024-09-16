@@ -1,41 +1,37 @@
 package pack.modelviews;
 
 public class PageView {
-	private int page_size = 5;
-	private int page_current = 1;
-	private int total_page = 1;
+	private int pageSize = 5;
+	private int pageCurrent = 1;
+	private int totalPage = 1;
 
-	public PageView() {
+	public PageView(int pageSize, int pageCurrent, int totalPage) {
+		this.pageSize = pageSize;
+		this.pageCurrent = pageCurrent;
+		this.totalPage = totalPage;
 	}
 
-	public PageView(int page_size, int page_current, int total_page) {
-		super();
-		this.page_size = page_size;
-		this.page_current = page_current;
-		this.total_page = total_page;
+	public int getPageSize() {
+		return pageSize;
 	}
 
-	public int getPage_size() {
-		return page_size;
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
 	}
 
-	public void setPage_size(int page_size) {
-		this.page_size = page_size;
+	public int getPageCurrent() {
+		return pageCurrent;
 	}
 
-	public int getPage_current() {
-		return page_current;
+	public void setPageCurrent(int pageCurrent) {
+		this.pageCurrent = pageCurrent;
 	}
 
-	public void setPage_current(int page_current) {
-		this.page_current = page_current;
+	public int getTotalPage() {
+		return totalPage;
 	}
 
-	public int getTotal_page() {
-		return total_page;
-	}
-
-	public void setTotal_page(int total_page) {
-		this.total_page = total_page;
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
 	}
 }
