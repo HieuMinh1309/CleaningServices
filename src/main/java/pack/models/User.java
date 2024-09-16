@@ -15,7 +15,7 @@ public class User {
 	public User() {}
 
 	public User(int id, String username, String password, String email, String phone, String address, String images,
-			Date createDate) {
+	Date createDate) {
 		super();
 		this.id = id;
 		this.username = username;
