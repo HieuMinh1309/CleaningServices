@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Cleanex - Account</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="Cleanex - Home Cleaning Service" name="keywords" />
+	<meta content="Cleanex - Home Cleaning Service" name="description" />
+
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet" />
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+
+	<link href="../front/img/favicon.ico" rel="icon" />
+	<link href="../front/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+	<link href="../front/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+	<link href="../front/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="account-container">
+			<div class="account-content">
+				<section>
+					<h2>My Account</h2>
+					<div class="row">
+						<div class="col-4">
+							<div class="btn" value="select an image">
+								<img src="../front/img/none-user.png" class="white-background hover-select" />
+							</div>
+							<div>Andy</div>
+						</div>
+
+						<form class="col-6">
+							<div class="form-group">
+								<label for="fullName">Full Name</label>
+								<input type="text" id="fullName" name="fullName" />
+							</div>
+							<div class="form-group">
+								<label for="email">Email Address</label>
+								<input type="email" id="email" name="email" />
+							</div>
+							<div class="form-group">
+								<label for="phone">Phone Number</label>
+								<input type="text" id="phone" name="phone" />
+							</div>
+							<div class="form-group">
+								<label for="address">Home Address</label>
+								<input type="text" id="address" name="address" />
+							</div>
+							<button type="submit" class="btn-primary">Update Profile</button>
+						</form>
+					</div>
+
+				</section>
+				<hr />
+				<section>
+					<h2>Booking Histories</h2>
+					<div class="table-container">
+						<table class="booking-table">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>Service</th>
+									<th>Price</th>
+									<th>Start Date</th>
+									<th>End Date</th>
+									<th>Assigned Employee</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--<tr th:each="item : ${details}">
+				                    <td th:text="${item.id}"></td>
+				                    <td th:text="${item.service}"></td>
+				                    <td th:text="${item.price}"></td>
+				                    <td th:text="${item.startDate}"></td>
+				                    <td th:text="${item.endDate}"></td>
+				                    <td th:text="${item.employee}"></td>
+				                </tr>-->
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+	<script src="../front/lib/easing/easing.min.js"></script>
+	<script src="../front/lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="../front/lib/isotope/isotope.pkgd.min.js"></script>
+	<script src="../front/lib/lightbox/js/lightbox.min.js"></script>
+	<script src="../front/js/main.js"></script>
+</body>
+
+</html>

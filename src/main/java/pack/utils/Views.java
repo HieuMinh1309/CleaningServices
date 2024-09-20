@@ -2,7 +2,32 @@ package pack.utils;
 
 public class Views {
 	
-	//Admin
+	//ADMIN - VIEWS
+	public static String ADMIN_LOGIN = "admin/ad_login";
+	public static String ADMIN_INDEX = "admin/ad_index";
+	
+	
+	
+	
+	//STAFF - VIEWS
+	public static String STAFF_LOGIN = "staff/sta_login";
+	public static String STAFF_INDEX = "staff/sta_index";
+	
+	
+	
+	//USER - VIEWS
+	public static String USER_SIGNUP = "user/signup";
+	public static String USER_LOGIN = "user/login";
+	public static String USER_ACCOUNTS = "user/accounts";
+	
+	//MAIN PAGE - VIEWS
+	public static String MAIN_INDEX = "main/index";
+	public static String MAIN_SERVICE = "main/service";
+	public static String MAIN_ABOUT = "main/about";
+	public static String MAIN_ARTICLE = "main/article";
+	public static String MAIN_CONTACT = "main/contact";
+	
+	//ADMIN
 	public static String TBL_ADMIN = "admin";
 	public static String COL_ADMIN_ID = "admin";
 	public static String COL_ADMIN_USERNAME = "username";
