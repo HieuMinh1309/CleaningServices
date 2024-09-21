@@ -11,7 +11,11 @@ import pack.interceptors.*;
 public class WebConfig implements WebMvcConfigurer{
 	@Autowired
 	private AdminInterceptor adminInterceptor;
+	
+	@Autowired
 	private StaffInterceptor staffInterceptor;
+	
+	@Autowired
 	private UserInterceptor userInterceptor;
 	
 	@Override
