@@ -34,6 +34,7 @@
 									<th>Start Date</th>
 									<th>End Date</th>
 									<th>Status</th>
+									<th>Assigned Employees</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
@@ -44,8 +45,8 @@
 				                    <td th:text="${item.price}"></td>
 				                    <td th:text="${item.startDate}"></td>
 				                    <td th:text="${item.endDate}"></td>
+									<td th:text="${item.employeeName}"></td>
 									<td th:text="${item.status}"></td>
-									<td th:href="${user/detail}">See details</td>
 				                </tr>-->
 							</tbody>
 						</table>

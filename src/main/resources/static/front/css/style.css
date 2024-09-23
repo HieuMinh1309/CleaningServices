@@ -1838,7 +1838,7 @@ a:hover, a:active, a:focus {
 	margin-top: 20px;
 }
 
-.login-container input[type="email"], .login-container input[type="password"],
+.login-container input[type="text"], .login-container input[type="password"],
 	.login-container button {
 	width: 100%;
 	padding: 15px;
@@ -1847,7 +1847,7 @@ a:hover, a:active, a:focus {
 	border-radius: 5px;
 }
 
-.login-container input[type="email"], .login-container input[type="password"]
+.login-container input[type="text"], .login-container input[type="password"]
 	{
 	background: rgba(0, 83, 156, 0.1);
 	color: #00539C;
@@ -2020,7 +2020,6 @@ a:hover, a:active, a:focus {
 /*******************************/
 /****** Order Detail CSS *******/
 /*******************************/
-
 .table-container {
 	overflow-x: auto;
 	margin: 20px auto;
@@ -2076,4 +2075,3 @@ a:hover, a:active, a:focus {
 		padding: 0 10px;
 	}
 }
-

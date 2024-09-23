@@ -25,14 +25,11 @@
 				<section>
 					<h2>My Account</h2>
 					<div class="row">
-						<div class="col-4">
-							<div class="btn" value="select an image">
-								<img src="../front/img/none-user.png" class="white-background hover-select" />
-							</div>
-							<div>Andy</div>
+						<div class="col-4 account-img">
+							<img src="../front/img/none-user.png" class="image" />
+							
 						</div>
-
-						<form class="col-6">
+						<div class="col-8">
 							<div class="form-group">
 								<label for="fullName">Full Name</label>
 								<input type="text" id="fullName" name="fullName" />
@@ -49,13 +46,10 @@
 								<label for="address">Home Address</label>
 								<input type="text" id="address" name="address" />
 							</div>
-							<button type="submit" class="btn-primary">Update Profile</button>
-						</form>
-					</div>
-
+						</div>
 				</section>
 				<hr />
-				<section th:if="${}">
+				<section>
 					<h2>Booking Histories</h2>
 					<div class="table-container">
 						<table class="booking-table">
@@ -78,7 +72,7 @@
 				                    <td th:text="${item.startDate}"></td>
 				                    <td th:text="${item.endDate}"></td>
 									<td th:text="${item.status}"></td>
-									<td th:href="${user/detail}">See details</td>
+									<td th:href="${user/details}">See details</td>
 				                </tr>-->
 							</tbody>
 						</table>

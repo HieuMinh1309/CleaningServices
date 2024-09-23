@@ -84,7 +84,7 @@ public class Views {
 	public static String COL_CONFIRM_IMAGES_ID = "id";
 	public static String COL_CONFIRM_IMAGES_DETAIL_ID = "detail_id";
 	public static String COL_CONFIRM_IMAGES_IMAGES = "images";
-	public static String COL_CONFIRM_IMAGES_NOTE = "note";
+	public static String COL_CONFIRM_IMAGES_CAPTURE_DATE = "captured_date";
 	public static String COL_CONFIRM_IMAGES_UPDATE_DATE = "uploaded_at";
 
 	// STAFFS
