@@ -10,7 +10,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception{
 		String logURL = request.getRequestURI();
-		if(logURL.equals("/admin/login") || logURL.equals("/staff/login") || logURL.equals("/user/login")) {
+		if(logURL.equals("/admin/login") || logURL.equals("/staff/login") || logURL.equals("/user/login") || logURL.equals("/user/signup")) {
 			return true;
 		}
 		return false;

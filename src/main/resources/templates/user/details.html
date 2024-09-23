@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Cleanex - Blogs</title>
+	<title>Cleanex - Account</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="Cleanex - Home Cleaning Service" name="keywords" />
 	<meta content="Cleanex - Home Cleaning Service" name="description" />
@@ -20,31 +20,39 @@
 
 <body>
 	<div class="wrapper">
-
-		<!-- Header -->
-		<div th:replace="~{main/fragments/main_header::header}"></div>
-
-		<!-- Page Header -->
-		<div class="page-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<h2>Blogs</h2>
+		<div class="account-container">
+			<div class="account-content">
+				<section>
+					<h2>Booking Histories</h2>
+					<div class="table-container">
+						<table class="booking-table">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>Service</th>
+									<th>Price</th>
+									<th>Start Date</th>
+									<th>End Date</th>
+									<th>Status</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--<tr th:each="item : ${details}">
+				                    <td th:text="${item.id}"></td>
+				                    <td th:text="${item.service}"></td>
+				                    <td th:text="${item.price}"></td>
+				                    <td th:text="${item.startDate}"></td>
+				                    <td th:text="${item.endDate}"></td>
+									<td th:text="${item.status}"></td>
+									<td th:href="${user/detail}">See details</td>
+				                </tr>-->
+							</tbody>
+						</table>
 					</div>
-					<div class="col-12">
-						<a th:href="@{/}">Home</a>
-						<a href="#">Blogs</a>
-					</div>
-				</div>
+				</section>
 			</div>
 		</div>
-
-		<h1>Our Blog page is currently maintaining. Thanks for using our service!</h1>
-
-		<!-- Footer -->
-		<div th:replace="~{main/fragments/main_footer::footer}"></div>
-
-		<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
