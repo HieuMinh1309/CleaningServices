@@ -16,6 +16,12 @@
 	<link href="../front/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 	<link href="../front/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
 	<link href="../front/css/style.css" rel="stylesheet" />
+	<style>
+		.error-message {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
 </head>
 
 <body>
@@ -23,30 +29,41 @@
 		<div class="signup-container">
 			<div class="form-container">
 				<h2>Create an Account</h2>
-				<form>
+				<form th:action="@{/user/newUser}" method="post" th:object="${new_item}">
+					<div th:if="${error}" class="error-message" th:text="${error}"></div>
 					<div class="form-group">
-						<label for="fullName">Full Name <span style="color: red;">(*)</span></label>
-						<input type="text" id="fullName" name="fullName" required>
+						<label for="username">UserName <span style="color: red;">(*)</span></label>
+						<input type="text" th:field="*{username}" required>
 					</div>
 					<div class="form-group">
 						<label for="email">Email Address <span style="color: red;">(*)</span></label>
-						<input type="email" id="email" name="email" required>
+						<input type="email" th:field="*{email}" required>
 					</div>
 					<div class="form-group">
 						<label for="phone">Phone Number <span style="color: red;">(*)</span></label>
-						<input type="text" id="phone" name="phone" required>
+						<input type="text" th:field="*{phone}" required>
 					</div>
 					<div class="form-group">
 						<label for="password">Password <span style="color: red;">(*)</span></label>
-						<input type="password" id="password" name="password" required>
+						<input type="password" th:field="*{password}" required>
+					</div>
+					<div class="form-group">
+						<label for="confirmPassword">Confirm Password <span style="color: red;">(*)</span></label>
+						<input type="password" th:field="*{confirmPassword}" required>
 					</div>
 					<button type="submit" class="btn-primary">Sign Up</button>
 					<div class="form-footer">
 						<p>Already have an account? <a th:href="@{/user/login}">Login</a></p>
 					</div>
 				</form>
+				<script>
+					setTimeout(function () {
+						document.querySelector('.error-message').innerText = '';
+					}, 6000);
+				</script>
 			</div>
 		</div>
+
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

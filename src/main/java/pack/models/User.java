@@ -11,6 +11,7 @@ public class User {
 	private String address;
 	private String images;
 	private Date createDate;
+	private String confirmPassword;
 	
 	public User() {}
 
@@ -89,5 +90,13 @@ public class User {
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 }
