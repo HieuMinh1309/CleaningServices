@@ -14,6 +14,8 @@ public class Views {
 	public static String USER_SIGNUP = "user/signup";
 	public static String USER_LOGIN = "user/login";
 	public static String USER_ACCOUNTS = "user/accounts";
+	public static String USER_BOOKING_HISTORY = "user/booking_history";
+	public static String USER_EDIT_PROFILE = "user/edit_profile";
 
 	// MAIN PAGE - VIEWS
 	public static String MAIN_INDEX = "main/index";

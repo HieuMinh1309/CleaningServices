@@ -7,9 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import pack.models.User;
 import pack.repositories.UserRepository;
-import pack.utils.SecurityUtility;
 
 @Component
 public class UserInterceptor implements HandlerInterceptor{
