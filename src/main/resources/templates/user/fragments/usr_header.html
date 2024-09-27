@@ -28,15 +28,13 @@
 							<a th:href="@{/article}" class="nav-item nav-link">Blog</a>
 							<a th:href="@{/about}" class="nav-item nav-link">About</a>
 							<a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
-							<div class="nav-item dropdown">
-								<a th:href="@{/user/account}" class="nav-link dropdown-toggle"
-									data-toggle="dropdown">Account</a>
-								<div class="dropdown-menu">
-									<a th:href="@{/user/signup}" class="dropdown-item">Sign Up</a>
-									<a th:href="@{/user/login}" class="dropdown-item">Login</a>
-									<a href="#" class="dropdown-item">Logout</a>
-								</div>
-							</div>
+							<a th:if="${session.usrId == null}" th:href="@{/user/login}"
+								class="nav-item nav-link">Login</a>
+							<a th:if="${session.usrId != null}" th:href="@{/user/accounts}"
+								class="nav-item nav-link">Your Account</a>
+							<a href="#emailing" class="btn">Send us Email</a>
+							<a th:if="${session.usrId != null}" th:href="@{/user/logout}"
+								class="nav-item nav-link">Logout</a>
 						</div>
 					</div>
 				</div>

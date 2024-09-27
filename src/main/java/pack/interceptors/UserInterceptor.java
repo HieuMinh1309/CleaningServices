@@ -7,7 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import pack.models.User;
 import pack.repositories.UserRepository;
+import pack.utils.SecurityUtility;
 
 @Component
 public class UserInterceptor implements HandlerInterceptor{
@@ -15,20 +17,10 @@ public class UserInterceptor implements HandlerInterceptor{
 	UserRepository rep;
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
-		Object username = request.getSession().getAttribute("username");
-		Object password = request.getSession().getAttribute("password");
-		
-		if(username == null && password == null) {
-			request.getSession().setAttribute("loginError", "Please enter your username and password.");
-			response.sendRedirect("user/login");
-			return false;
-		}
-		
-		if(rep.ExistsUserCheck(String.valueOf(username), String.valueOf(password))) {
+		Object username = request.getSession().getAttribute("usrName");
+		if(username != null) {
 			return true;
 		}
-		
-		request.getSession().setAttribute("loginError", "Invalid username or password.");
 		response.sendRedirect("/user/login");
 		return false;
 	}

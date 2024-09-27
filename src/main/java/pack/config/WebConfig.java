@@ -9,25 +9,25 @@ import pack.interceptors.*;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-//	@Autowired
-//	private AdminInterceptor adminInterceptor;
-//
-//	@Autowired
-//	private StaffInterceptor staffInterceptor;
-//
-//	@Autowired
-//	private UserInterceptor userInterceptor;
-//
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/admin/login", "user/login", "user/signup",
-//				"staff/login");
-//		registry.addInterceptor(userInterceptor).addPathPatterns("/user/**").excludePathPatterns("/user/login",
-//				"user/signup", "/user/checklogin");
-//		registry.addInterceptor(adminInterceptor).addPathPatterns("admin/**").excludePathPatterns("/admin/login",
-//				"/admin/checklogin");
-//		registry.addInterceptor(staffInterceptor).addPathPatterns("staff/**").excludePathPatterns("/staff/login",
-//				"/staff/checklogin");
-//		WebMvcConfigurer.super.addInterceptors(registry);
-//	}
+	@Autowired
+	private AdminInterceptor adminInterceptor;
+
+	@Autowired
+	private StaffInterceptor staffInterceptor;
+
+	@Autowired
+	private UserInterceptor userInterceptor;
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/admin/login", "user/login", "user/signup",
+				"staff/login");
+		registry.addInterceptor(userInterceptor).addPathPatterns("/user/**").excludePathPatterns("/user/login",
+				"/user/signup", "/user/checklogin", "/user/newUser");
+		registry.addInterceptor(adminInterceptor).addPathPatterns("admin/**").excludePathPatterns("/admin/login",
+				"/admin/checklogin");
+		registry.addInterceptor(staffInterceptor).addPathPatterns("staff/**").excludePathPatterns("/staff/login",
+				"/staff/checklogin");
+		WebMvcConfigurer.super.addInterceptors(registry);
+	}
 }
