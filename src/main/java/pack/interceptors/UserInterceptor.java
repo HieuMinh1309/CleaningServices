@@ -7,9 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import pack.models.User;
 import pack.repositories.UserRepository;
-import pack.utils.SecurityUtility;
 
 @Component
 public class UserInterceptor implements HandlerInterceptor{
@@ -17,8 +15,8 @@ public class UserInterceptor implements HandlerInterceptor{
 	UserRepository rep;
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
-		Object username = request.getSession().getAttribute("usrName");
-		if(username != null) {
+		Object userId = request.getSession().getAttribute("usrId");
+		if(userId != null) {
 			return true;
 		}
 		response.sendRedirect("/user/login");

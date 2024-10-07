@@ -14,6 +14,8 @@ import pack.repositories.UserRepository;
 import pack.utils.SecurityUtility;
 import pack.utils.Views;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RequestMapping("/user")
 @Controller
@@ -80,8 +82,14 @@ public class UserController {
 			return Views.USER_LOGIN;
 		}
 
-		request.getSession().setAttribute("usrName", user.getUsername());
+		request.getSession().setAttribute("usrId", user.getId());
 		return "redirect:/";
 	}
 
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+	    request.getSession().invalidate();
+	    return "redirect:/user/login";
+	}
+	
 }
