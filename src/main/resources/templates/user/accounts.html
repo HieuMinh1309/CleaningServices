@@ -71,20 +71,20 @@
 				<div class="col-md-3 text-center">
 					<img src="../front/img/none-user.png" class="img-fluid rounded-circle mb-3" width="150"
 						height="150" />
-					<h4>${user.username}</h4>
+					<h4></h4>
 					<button class="btn btn-primary mt-3" aria-label="Edit Information">Edit Profile</button>
 				</div>
 				<div class="col-md-9">
 					<h2 class="mb-4">User Information</h2>
 					<dl class="row">
 						<dt class="col-sm-3">Username:</dt>
-						<dd class="col-sm-9">${user.username}</dd>
+						<dd class="col-sm-9" th:text="${user.username}"></dd>
 						<dt class="col-sm-3">Email:</dt>
-						<dd class="col-sm-9">${user.email}</dd>
+						<dd class="col-sm-9" th:text="${user.email}"></dd>
 						<dt class="col-sm-3">Phone:</dt>
-						<dd class="col-sm-9">${user.phone}</dd>
+						<dd class="col-sm-9" th:text="${user.phone}"></dd>
 						<dt class="col-sm-3">Address:</dt>
-						<dd class="col-sm-9">${user.address}</dd>
+						<dd class="col-sm-9" th:text="${user.address}"></dd>
 					</dl>
 				</div>
 			</div>
@@ -114,7 +114,7 @@
 									<td>12123</td>
 									<td><button class="btn btn-sm btn-outline-primary">View Details</button></td>
 								</tr>
-								
+
 								<!--<tr th:each="item : ${details}">
 										<td th:text="${item.id}"></td>
 										<td th:text="${item.service}"></td>

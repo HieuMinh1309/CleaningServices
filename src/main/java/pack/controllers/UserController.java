@@ -14,8 +14,6 @@ import pack.repositories.UserRepository;
 import pack.utils.SecurityUtility;
 import pack.utils.Views;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RequestMapping("/user")
 @Controller
@@ -25,7 +23,9 @@ public class UserController {
 	UserRepository rep;
 
 	@GetMapping("/accounts")
-	public String accounts() {
+	public String accounts(HttpServletRequest request, Model model) {
+		 User user = rep.findUserbyUsername(request.getSession().getAttribute("username").toString());
+		model.addAttribute("user", user);
 		return Views.USER_ACCOUNTS;
 	}
 
@@ -83,6 +83,7 @@ public class UserController {
 		}
 
 		request.getSession().setAttribute("usrId", user.getId());
+		request.getSession().setAttribute("username", user.getUsername());
 		return "redirect:/";
 	}
 
