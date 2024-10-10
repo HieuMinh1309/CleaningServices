@@ -12,11 +12,13 @@ public class User {
 	private String images;
 	private Date createDate;
 	private String confirmPassword;
-	
-	public User() {}
+	private String fullname;
+
+	public User() {
+	}
 
 	public User(int id, String username, String password, String email, String phone, String address, String images,
-	Date createDate) {
+			Date createDate, String confirmPassword, String fullname) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -26,6 +28,8 @@ public class User {
 		this.address = address;
 		this.images = images;
 		this.createDate = createDate;
+		this.confirmPassword = confirmPassword;
+		this.fullname = fullname;
 	}
 
 	public int getId() {
@@ -99,4 +103,13 @@ public class User {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
 }

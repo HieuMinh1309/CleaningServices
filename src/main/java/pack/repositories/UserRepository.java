@@ -26,9 +26,9 @@ public class UserRepository {
 	
 	public String newUser(User user) {
 		try {
-			String str_query = String.format("insert into %s (username, password, email, phone) values(?,?,?,?)", Views.TBL_USER);
+			String str_query = String.format("insert into %s (username, password, email, phone, fullname) values(?,?,?,?,?)", Views.TBL_USER);
 			String hashPassword = SecurityUtility.encryptBcrypt(user.getPassword());
-			int rowaccept = db.update(str_query, new Object[] {user.getUsername(), hashPassword, user.getEmail(), user.getPhone()});
+			int rowaccept = db.update(str_query, new Object[] {user.getUsername(), hashPassword, user.getEmail(), user.getPhone(), user.getFullname()});
 			if(rowaccept == 1) {
 				return "success";
 			}

@@ -47,7 +47,7 @@ public class UserController {
 		}
 		try {
 			String result = rep.newUser(user);
-			if ("success".equals(result)) {
+			if (result.equals("success")) {
 				return "redirect:/user/login";
 			}
 			model.addAttribute("error", "Failed to create user, please try again.");

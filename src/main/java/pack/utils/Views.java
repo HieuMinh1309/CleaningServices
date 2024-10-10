@@ -35,6 +35,7 @@ public class Views {
 	// USER
 	public static String TBL_USER = "users";
 	public static String COL_USER_ID = "id";
+	public static String COL_USER_FULLNAME = "fullname";
 	public static String COL_USER_USERNAME = "username";
 	public static String COL_USER_PASSWORD = "password";
 	public static String COL_USER_EMAIL = "email";
