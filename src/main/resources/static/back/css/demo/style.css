@@ -23162,4 +23162,142 @@ footer .vertical-divider {
   }
 }
 
-/*# sourceMappingURL=../maps/demo/style.css.map */
+/*******************************/
+/********** Login CSS **********/
+/*******************************/
+.login-container {
+	max-width: 500px;
+	margin: 100px auto;
+	padding: 30px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	background: rgba(0, 83, 156, 0.1);
+	border-radius: 10px;
+}
+
+.login-container h2 {
+	color: #00539C;
+	font-size: 32px;
+	text-align: center;
+}
+
+.login-container form {
+	margin-top: 20px;
+}
+
+.login-container input[type="text"], .login-container input[type="password"],
+	.login-container button {
+	width: 100%;
+	padding: 15px;
+	margin-bottom: 15px;
+	border: 1px solid rgba(0, 83, 156, 0.3);
+	border-radius: 5px;
+}
+
+.login-container input[type="text"], .login-container input[type="password"]
+	{
+	background: rgba(0, 83, 156, 0.1);
+	color: #00539C;
+}
+
+.login-container button {
+	background: #FFD662;
+	color: #000000;
+	border: none;
+	font-size: 16px;
+	transition: background 0.3s;
+}
+
+.login-container button:hover {
+	background: #00539C;
+	color: #ffffff;
+}
+
+.login-container .link {
+	display: block;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+.login-container .link a {
+	color: #00539C;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.login-container .link a:hover {
+	color: #FFD662;
+}
+
+/*******************************/
+/******** Accounts CSS *********/
+/*******************************/
+.account-container {
+	max-width: auto;
+	margin: 100px auto;
+	padding: 30px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	background: rgba(0, 83, 156, 0.1);
+	border-radius: 10px;
+}
+
+.account-container h2 {
+	color: #00539C;
+	font-size: 32px;
+	text-align: center;
+}
+
+.account-container form {
+	margin-top: 20px;
+}
+
+.account-container input[type="text"], .account-container input[type="email"],
+	.account-container input[type="password"], .account-container button {
+	width: 100%;
+	padding: 15px;
+	margin-bottom: 15px;
+	border: 1px solid rgba(0, 83, 156, 0.3);
+	border-radius: 5px;
+}
+
+.account-container input[type="text"], .account-container input[type="email"],
+	.account-container input[type="password"] {
+	background: rgba(0, 83, 156, 0.1);
+	color: #00539C;
+}
+
+.account-container button {
+	background: #FFD662;
+	color: #000000;
+	border: none;
+	font-size: 16px;
+	transition: background 0.3s;
+}
+
+.account-container button:hover {
+	background: #00539C;
+	color: #ffffff;
+}
+
+.account-container .link {
+	display: block;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+.account-container .link a {
+	color: #00539C;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.account-container .link a:hover {
+	color: #FFD662;
+}
+
+/* Error Messages */
+.error-message {
+	color: red;
+	font-weight: bold;
+}

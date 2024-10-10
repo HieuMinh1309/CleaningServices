@@ -3,12 +3,17 @@ package pack.utils;
 public class Views {
 
 	// ADMIN - VIEWS
-	public static String ADMIN_LOGIN = "admin/ad_login";
-	public static String ADMIN_INDEX = "admin/ad_index";
+	public static String ADMIN_LOGIN = "admin/login";
+	public static String ADMIN_INDEX = "admin/index";
+	public static String ADMIN_ACCOUNTS = "admin/accounts";
+	public static String ADMIN_ORDERS = "admin/orders";
+	public static String ADMIN_STAFFS = "admin/staffs";
+	public static String ADMIN_BLOGS = "admin/blogs";
 
 	// STAFF - VIEWS
-	public static String STAFF_LOGIN = "staff/sta_login";
-	public static String STAFF_INDEX = "staff/sta_index";
+	public static String STAFF_LOGIN = "staff/login";
+	public static String STAFF_INDEX = "staff/index";
+	public static String STAFF_ACCOUNTS = "staff/accounts";
 
 	// USER - VIEWS
 	public static String USER_SIGNUP = "user/signup";
@@ -35,6 +40,7 @@ public class Views {
 	// USER
 	public static String TBL_USER = "users";
 	public static String COL_USER_ID = "id";
+	public static String COL_USER_FULLNAME = "fullname";
 	public static String COL_USER_USERNAME = "username";
 	public static String COL_USER_PASSWORD = "password";
 	public static String COL_USER_EMAIL = "email";

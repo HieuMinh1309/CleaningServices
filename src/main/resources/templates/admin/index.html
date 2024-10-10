@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<title>Cleanex - Admin Dashboard</title>
+
+	<link rel="stylesheet" href="../back/vendors/mdi/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="../back/vendors/css/vendor.bundle.base.css" />
+	<link rel="stylesheet" href="../back/vendors/flag-icon-css/css/flag-icon.min.css" />
+	<link rel="stylesheet" href="../back/vendors/jvectormap/jquery-jvectormap.css" />
+	<link rel="stylesheet" href="../back/css/demo/style.css" />
+</head>
+
+<body>
+	<script src="../back/js/preloader.js"></script>
+	<div class="body-wrapper">
+		<div class="main-wrapper mdc-drawer-app-content">
+
+			<!-- HEADER -->
+			<div th:replace="~{admin/fragment/header::adminHeader}"></div>
+
+			<div class="page-wrapper mdc-toolbar-fixed-adjust">
+				<main class="content-wrapper">
+					<div class="mdc-layout-grid">
+						<div class="mdc-layout-grid__inner">
+							<div
+								class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+								<div class="mdc-card info-card info-card--success">
+									<div class="card-inner">
+										<h5 class="card-title">Profits</h5>
+										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Tổng thu nhập</h5>
+										<div class="card-icon-wrapper">
+											<i class="material-icons">attach_money</i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
+								th:href="@{/admin/staffs}">
+								<div class="mdc-card info-card info-card--danger">
+									<div class="card-inner">
+										<h5 class="card-title">Available Staffs</h5>
+										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Nhân viên chưa phân công
+										</h5>
+										<div class="card-icon-wrapper">
+											<i class="material-icons">group</i>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
+								th:href="@{/admin/orders}">
+								<div class="mdc-card info-card info-card--primary">
+									<div class="card-inner">
+										<h5 class="card-title">Client's Orders</h5>
+										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Đơn đặt cùa khách hàng
+											chưa phân công</h5>
+										<div class="card-icon-wrapper">
+											<svg xmlns="http://www.w3.org/2000/svg" height="30px"
+												viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
+												<path
+													d="M160-160v-516L82-846l72-34 94 202h464l94-202 72 34-78 170v516H160Zm240-280h160q17 0 28.5-11.5T600-480q0-17-11.5-28.5T560-520H400q-17 0-28.5 11.5T360-480q0 17 11.5 28.5T400-440ZM240-240h480v-358H240v358Zm0 0v-358 358Z" />
+											</svg>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
+								href="#">
+								<div class="mdc-card info-card info-card--info">
+									<div class="card-inner">
+										<h5 class="card-title">Blogs</h5>
+										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Tổng số blog hiện tại</h5>
+										<div class="card-icon-wrapper">
+											<svg xmlns="http://www.w3.org/2000/svg" height="30px"
+												viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
+												<path
+													d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
+											</svg>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
+
+	<script src="../back/vendors/js/vendor.bundle.base.js"></script>
+	<script src="../back/vendors/chartjs/Chart.min.js"></script>
+	<script src="../back/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+	<script src="../back/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="../back/js/material.js"></script>
+	<script src="../back/js/misc.js"></script>
+	<script src="../back/js/dashboard.js"></script>
+</body>
+
+</html>
