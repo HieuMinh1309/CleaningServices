@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addInterceptor(new UserInterceptor()).addPathPatterns("/user/**").excludePathPatterns("/user/login",
 				"/user/signup", "/user/checklogin", "/user/newUser");
 		registry.addInterceptor(adminInterceptor).addPathPatterns("admin/**").excludePathPatterns("/admin/login",
-				"/admin/checklogin");
+				"/admin/checklogin", "admin/accounts");
 		registry.addInterceptor(staffInterceptor).addPathPatterns("staff/**").excludePathPatterns("/staff/login",
 				"/staff/checklogin");
 		WebMvcConfigurer.super.addInterceptors(registry);

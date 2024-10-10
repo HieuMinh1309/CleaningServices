@@ -68,23 +68,24 @@
 
 		<div class="acc-container mt-5">
 			<div class="row">
-				<div class="col-md-3 text-center">
+				<div class="col-3 text-center">
 					<img src="../front/img/none-user.png" class="img-fluid rounded-circle mb-3" width="150"
 						height="150" />
 					<h4 th:text="${user.fullname}"></h4>
 					<button class="btn btn-primary mt-3" aria-label="Edit Information">Edit Profile</button>
 				</div>
-				<div class="col-md-9">
-					<h2 class="mb-4">User Information</h2>
+				<div class="col-9">
+					<h2 class="mb-4">Your Information:</h2>
 					<dl class="row">
-						<dt class="col-sm-3">Username:</dt>
-						<dd class="col-sm-9" th:text="${user.username}"></dd>
-						<dt class="col-sm-3">Email:</dt>
-						<dd class="col-sm-9" th:text="${user.email}"></dd>
-						<dt class="col-sm-3">Phone:</dt>
-						<dd class="col-sm-9" th:text="${user.phone}"></dd>
-						<dt class="col-sm-3">Address:</dt>
-						<dd class="col-sm-9" th:text="${user.address}"></dd>
+						<dt class="col-3">Username:</dt>
+						<dd class="col-9" th:text="${user.username}"></dd>
+						<dt class="col-3">Email:</dt>
+						<dd class="col-6" th:text="${user.email}"></dd>
+						<a class="col-3" style="color: blue;" href="#">Verify Email</a>
+						<dt class="col-3">Phone:</dt>
+						<dd class="col-9" th:text="${user.phone}"></dd>
+						<dt class="col-3">Address:</dt>
+						<dd class="col-9" th:text="${user.address}"></dd>
 					</dl>
 				</div>
 			</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<title>Cleanex - Blogs Management</title>
+
+	<link rel="stylesheet" href="../back/vendors/mdi/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="../back/vendors/css/vendor.bundle.base.css" />
+	<link rel="stylesheet" href="../back/vendors/flag-icon-css/css/flag-icon.min.css" />
+	<link rel="stylesheet" href="../back/vendors/jvectormap/jquery-jvectormap.css" />
+	<link rel="stylesheet" href="../back/css/demo/style.css" />
+</head>
+
+<body>
+	<script src="../back/js/preloader.js"></script>
+	<div class="body-wrapper">
+		<div class="main-wrapper mdc-drawer-app-content">
+
+			<!-- HEADER -->
+			<div th:replace="~{admin/fragment/header::adminHeader}"></div>
+
+			- Hiển thị danh sách Blogs bao gồm thông tin cơ bản
+			- Cột Actions: Write, Edit, Delete
+		</div>
+	</div>
+
+	<script src="../back/vendors/js/vendor.bundle.base.js"></script>
+	<script src="../back/vendors/chartjs/Chart.min.js"></script>
+	<script src="../back/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+	<script src="../back/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="../back/js/material.js"></script>
+	<script src="../back/js/misc.js"></script>
+	<script src="../back/js/dashboard.js"></script>
+</body>
+
+</html>
