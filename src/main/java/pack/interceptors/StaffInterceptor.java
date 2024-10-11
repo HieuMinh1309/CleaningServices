@@ -15,20 +15,10 @@ public class StaffInterceptor implements HandlerInterceptor{
 	StaffRepository rep;
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
-		Object username = request.getSession().getAttribute("username");
-		Object password = request.getSession().getAttribute("password");
-		
-		if(username == null && password == null) {
-			request.getSession().setAttribute("loginError", "Please enter your username and password.");
-			response.sendRedirect("staff/login");
-			return false;
-		}
-		
-		if(rep.ExistsStaffCheck(String.valueOf(username), String.valueOf(password))) {
+		Object staffId = request.getSession().getAttribute("staffId");
+		if(staffId != null) {
 			return true;
 		}
-		
-		request.getSession().setAttribute("loginError", "Invalid username or password.");
 		response.sendRedirect("/staff/login");
 		return false;
 	}

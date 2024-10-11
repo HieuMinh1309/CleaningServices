@@ -16,9 +16,9 @@
 	<div class="wrapper">
 		<div class="login-container">
 			<div class="form-container">
-				<h2>Welcome Back</h2>
+				<h2>Admin login</h2>
 				<div th:if="${loginError}" class="error-message" th:text="${loginError}"></div>
-				<form th:action="@{/user/checklogin}" method="post">
+				<form th:action="@{/admin/checklogin}" method="post">
 					<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" id="username" name="usrname" required>

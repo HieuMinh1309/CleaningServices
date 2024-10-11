@@ -19,17 +19,12 @@
 	<script src="../back/js/preloader.js"></script>
 	<div class="body-wrapper">
 
-		<!--   ASIDE   -->
-		<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open"
-			th:replace="~{admin/fragments/aside::adminAside}">
-			ASIDE
-		</aside>
 		<div class="main-wrapper mdc-drawer-app-content">
 
 			<!-- HEADER -->
-			<header class="mdc-top-app-bar" th:replace="~{admin/fragments/header::adminHeader}">
+			<!--<header class="mdc-top-app-bar" th:replace="~{admin/fragments/header::adminHeader}">
 				HEADER
-			</header>
+			</header>-->
 			<div class="page-wrapper mdc-toolbar-fixed-adjust">
 				<main class="content-wrapper">
 					<div class="mdc-layout-grid">
@@ -333,11 +328,6 @@
 						</div>
 					</div>
 				</main>
-
-				<!-- FOOTER -->
-				<footer th:replace="~{admin/fragments/footer::adminFooter}">
-					FOOTER
-				</footer>
 			</div>
 		</div>
 	</div>
