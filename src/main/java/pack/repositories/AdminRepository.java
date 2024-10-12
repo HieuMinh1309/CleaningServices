@@ -1,9 +1,6 @@
 package pack.repositories;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,88 +15,113 @@ public class AdminRepository {
 	@Autowired
 	JdbcTemplate db;
 
-	public boolean ExistsAdminCheck(String username, String password) {
-		String str_query = String.format("select * from %s where %s=? and %s=?", Views.TBL_ADMIN,
-				Views.COL_ADMIN_USERNAME, Views.COL_ADMIN_PASSWORD);
-		List<Admin> admin = db.query(str_query, new Admin_mapper(), new Object[] { username, password });
-		if (!admin.isEmpty()) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean createService(Service service) {
-		String query = "INSERT INTO " + Views.TBL_SERVICE
-				+ " (service_name, description, base_price, duration) VALUES (?, ?, ?, ?)";
+	public Admin findAdminbyUsername(String username) {
 		try {
-			int rowsAffected = db.update(query, service.getSerName(), service.getDescription(), service.getBasePrice(),
-					service.getDuration());
-			return rowsAffected == 1;
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return false;
+			String str_query = String.format("select * from %s where %s = ?", Views.TBL_ADMIN,
+					Views.COL_ADMIN_USERNAME);
+			return db.queryForObject(str_query, new Admin_mapper(), new Object[] { username });
+		} catch (Exception e) {
+			return null;
 		}
 	}
 
-	public boolean updateService(Service service) {
-		String query = "UPDATE " + Views.TBL_SERVICE + " SET " + Views.COL_SERVICE_NAME + " = ?, "
-				+ Views.COL_SERVICE_DESCRIPTION + " = ?, " + Views.COL_SERVICE_BASE_PRICE + " = ?, "
-				+ Views.COL_SERVICE_DURATION + " = ? " + "WHERE " + Views.COL_SERVICE_ID + " = ?";
+	public Admin findAdminById(int id) {
 		try {
-			int rowsAffected = db.update(query, service.getSerName(), service.getDescription(), service.getBasePrice(),
-					service.getDuration(), service.getId());
-			return rowsAffected == 1;
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return false;
+			String str_query = String.format("select * from %s where %s = ?", Views.TBL_ADMIN, Views.COL_ADMIN_ID);
+			return db.queryForObject(str_query, new Admin_mapper(), new Object[] { id });
+		} catch (Exception e) {
+			return null;
 		}
 	}
 
-	public boolean deleteService(int id) {
-		String query = "DELETE FROM " + Views.TBL_SERVICE + " WHERE " + Views.COL_SERVICE_ID + " = ?";
+	public String newService(Service service) {
 		try {
-			int rowsAffected = db.update(query, id);
-			return rowsAffected == 1;
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return false;
+			String str_query = String.format("insert into %s values(?,?,?,?)", Views.TBL_SERVICE);
+			int rowaccept = db.update(str_query, new Object[] { service.getSerName(), service.getDescription(),
+					service.getBasePrice(), service.getDuration() });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		return "";
 	}
 
-	public boolean createArticle(Article article) {
-		String query = "INSERT INTO " + Views.TBL_ARTICLE
-				+ " (title, content, images, created_at, updated_at) VALUES (?, ?, ?, GETDATE(), GETDATE())";
+	public String editService(Service service) {
 		try {
-			int rowsAffected = db.update(query, article.getTitle(), article.getContent(), article.getImages());
-			return rowsAffected == 1;
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return false;
+			String str_query = String.format("update %s set %=?, %s = ?, %s = ?, %s = ? where %s = ?",
+					Views.TBL_SERVICE, Views.COL_SERVICE_NAME, Views.COL_SERVICE_DESCRIPTION,
+					Views.COL_SERVICE_BASE_PRICE, Views.COL_SERVICE_DURATION, Views.COL_SERVICE_ID);
+			int rowaccept = db.update(str_query, new Object[] { service.getSerName(), service.getDescription(),
+					service.getBasePrice(), service.getDuration(), service.getId() });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		return "";
 	}
 
-	public boolean updateArticle(Article article) {
-		String query = "UPDATE " + Views.TBL_ARTICLE + " SET " + Views.COL_ARTICLE_TITLE + " = ?, "
-				+ Views.COL_ARTICLE_CONTENT + " = ?, " + Views.COL_ARTICLE_IMAGES + " = ?, "
-				+ Views.COL_ARTICLE_UPDATE_DATE + " = GETDATE() " + "WHERE " + Views.COL_ARTICLE_ID + " = ?";
+	public String deleteService(int id) {
 		try {
-			int rowsAffected = db.update(query, article.getTitle(), article.getContent(), article.getImages(),
-					article.getId());
-			return rowsAffected == 1;
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return false;
+			int rowaccept = db.update("delete from services where id = ?", new Object[] { id });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		return "";
 	}
 
-	public boolean deleteArticle(int id) {
-		String query = "DELETE FROM " + Views.TBL_ARTICLE + " WHERE " + Views.COL_ARTICLE_ID + " = ?";
+	public String newArticle(Article article) {
 		try {
-			int rowsAffected = db.update(query, id);
-			return rowsAffected == 1;
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return false;
+			String str_query = String.format("insert into %s values(?,?,?)", Views.TBL_ARTICLE);
+			int rowaccept = db.update(str_query,
+					new Object[] { article.getTitle(), article.getContent(), article.getImages() });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		return "";
+	}
+
+	public String editArticle(Article article) {
+		try {
+			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=GETDATE() where id = ?",
+					Views.TBL_ARTICLE, Views.COL_ARTICLE_TITLE, Views.COL_ARTICLE_CONTENT, Views.COL_ARTICLE_IMAGES,
+					Views.COL_ARTICLE_UPDATE_DATE);
+			int rowaccept = db.update(str_query,
+					new Object[] { article.getTitle(), article.getContent(), article.getImages() });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "";
+	}
+
+	public String deleteArticle(int id) {
+		try {
+			int rowaccept = db.update("delete from %s where %s = ?", Views.TBL_ARTICLE, Views.COL_ARTICLE_ID,
+					new Object[] { id });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "";
 	}
 }

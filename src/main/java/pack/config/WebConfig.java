@@ -13,11 +13,6 @@ import pack.interceptors.*;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-	@Autowired
-	private AdminInterceptor adminInterceptor;
-
-	@Autowired
-	private StaffInterceptor staffInterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -25,9 +20,9 @@ public class WebConfig implements WebMvcConfigurer {
 				"/staff/login");
 		registry.addInterceptor(new UserInterceptor()).addPathPatterns("/user/**").excludePathPatterns("/user/login",
 				"/user/signup", "/user/checklogin", "/user/newUser");
-		registry.addInterceptor(adminInterceptor).addPathPatterns("admin/**").excludePathPatterns("/admin/login",
-				"/admin/checklogin", "admin/accounts");
-		registry.addInterceptor(staffInterceptor).addPathPatterns("staff/**").excludePathPatterns("/staff/login",
+		registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/admin/**").excludePathPatterns("/admin/login",
+				"/admin/checklogin");
+		registry.addInterceptor(new StaffInterceptor()).addPathPatterns("/staff/**").excludePathPatterns("/staff/login",
 				"/staff/checklogin");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}

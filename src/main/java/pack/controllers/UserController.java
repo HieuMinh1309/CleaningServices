@@ -1,5 +1,7 @@
 package pack.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpServletRequest;
+import pack.models.Order;
 import pack.models.User;
 import pack.repositories.UserRepository;
 import pack.utils.SecurityUtility;
@@ -25,7 +28,9 @@ public class UserController {
 	@GetMapping("/accounts")
 	public String accounts(HttpServletRequest request, Model model) {
 		 User user = rep.findUserbyUsername(request.getSession().getAttribute("username").toString());
+		 List<Order> orderList = rep.OrderList((int)request.getSession().getAttribute("usrId"));
 		model.addAttribute("user", user);
+		model.addAttribute("orders", orderList);
 		return Views.USER_ACCOUNTS;
 	}
 

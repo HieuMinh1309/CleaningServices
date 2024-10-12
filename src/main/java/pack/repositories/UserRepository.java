@@ -1,11 +1,15 @@
 package pack.repositories;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import pack.models.Order;
 import pack.models.User;
+import pack.modelviews.Order_mapper;
 import pack.modelviews.User_mapper;
 import pack.utils.SecurityUtility;
 import pack.utils.Views;
@@ -37,6 +41,16 @@ public class UserRepository {
 	        throw new IllegalArgumentException("Some information(username, email, phone) may already exists."); 
 		}catch (Exception e) {
 			return "error";
+		}
+	}
+	
+	//Orders
+	public List<Order> OrderList(int id){
+		try {
+			String str_query = String.format("select * from %s where %s=? order by %s desc limit 5", Views.TBL_ORDER, Views.COL_ORDERS_USER_ID, Views.COL_ORDERS_CREATEDATE);
+			return db.query(str_query, new Order_mapper(), new Object[] {id});
+		} catch (Exception e) {
+			return null;
 		}
 	}
 }

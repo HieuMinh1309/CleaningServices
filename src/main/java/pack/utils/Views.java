@@ -35,7 +35,7 @@ public class Views {
 
 	// ADMIN
 	public static String TBL_ADMIN = "admin";
-	public static String COL_ADMIN_ID = "admin";
+	public static String COL_ADMIN_ID = "id";
 	public static String COL_ADMIN_USERNAME = "username";
 	public static String COL_ADMIN_PASSWORD = "password";
 	public static String COL_ADMIN_EMAIL = "email";

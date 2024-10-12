@@ -97,10 +97,9 @@
 							<thead>
 								<tr>
 									<th scope="col">No.</th>
-									<th scope="col">Service</th>
 									<th scope="col">Price</th>
 									<th scope="col">Start Date</th>
-									<th scope="col">End Date</th>
+									<th scope="col">Create Date</th>
 									<th scope="col">Status</th>
 									<th scope="col">Actions</th>
 								</tr>
@@ -118,7 +117,17 @@
 											See details
 										</a>
 									</td>
+									<!--<tr th:each="item: ${orders}" th:if="${item != null}">
+									<td th:text="${item.id}"></td>
+									<td th:text="${item.price}"></td>
+									<td th:text="${item.startDate}"></td>
+									<td th:text="${item.createDate}"></td>
+									<td th:text="${item.status}"></td>
+									<td th:href="${user/details}">See details</td>
 								</tr>
+								<tr th:if="${item == null}">
+									<td colspan="6" style="text-align: center; font-weight: 700;">None</td>
+								</tr>-->
 							</tbody>
 						</table>
 						<a href="#" class="btn btn-info" style="margin-left:38vw">Browse More</a>
