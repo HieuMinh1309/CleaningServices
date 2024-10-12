@@ -8,7 +8,11 @@ public class Views {
 	public static String ADMIN_ACCOUNTS = "admin/accounts";
 	public static String ADMIN_ORDERS = "admin/orders";
 	public static String ADMIN_STAFFS = "admin/staffs";
-	public static String ADMIN_BLOGS = "admin/blogs";
+	
+	// ADMIN/BLOGS
+	public static String ADMIN_BLOGS_LIST = "admin/blogs/blogList";
+	public static String ADMIN_BLOGS_CREATE = "admin/blogs/blogCreate";
+	public static String ADMIN_BLOGS_EDIT = "admin/blogs/blogEdit";
 
 	// STAFF - VIEWS
 	public static String STAFF_LOGIN = "staff/login";

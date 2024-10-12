@@ -106,27 +106,22 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>123123</td>
-									<td>456456</td>
-									<td>789789</td>
-									<td>1111</td>
-									<td>2222</td>
-									<td>12123</td>
-									<td><button class="btn btn-sm btn-outline-primary">View Details</button></td>
+								<tr th:each="item : ${orders}">
+									<td th:text="${item.id}"></td>
+									<td th:text="${item.userId}"></td>
+									<td th:text="${item.price}"></td>
+									<td th:text="${item.startDate}"></td>
+									<td th:text="${item.createdAt}"></td>
+									<td th:text="${item.status}"></td>
+									<td>
+										<a class="btn btn-outline-info" th:href="@{user/booking_history}">
+											See details
+										</a>
+									</td>
 								</tr>
-
-								<!--<tr th:each="item : ${details}">
-										<td th:text="${item.id}"></td>
-										<td th:text="${item.service}"></td>
-										<td th:text="${item.price}"></td>
-										<td th:text="${item.startDate}"></td>
-										<td th:text="${item.endDate}"></td>
-										<td th:text="${item.status}"></td>
-										<td th:href="${user/details}">See details</td>
-									</tr>-->
 							</tbody>
 						</table>
+						<a href="#" class="btn btn-info" style="margin-left:38vw">Browse More</a>
 					</div>
 				</div>
 			</div>

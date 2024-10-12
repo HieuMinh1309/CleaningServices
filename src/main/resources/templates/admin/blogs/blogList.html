@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<title>Cleanex - Blog Management</title>
+
+	<link rel="stylesheet" href="../back/vendors/mdi/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="../back/vendors/css/vendor.bundle.base.css" />
+	<link rel="stylesheet" href="../back/vendors/flag-icon-css/css/flag-icon.min.css" />
+	<link rel="stylesheet" href="../back/vendors/jvectormap/jquery-jvectormap.css" />
+	<link rel="stylesheet" href="../back/css/demo/style.css" />
+</head>
+
+<body>
+	<script src="../back/js/preloader.js"></script>
+	<div class="body-wrapper">
+		<div class="main-wrapper mdc-drawer-app-content">
+
+			<!-- HEADER -->
+			<div th:replace="~{admin/fragment/header::adminHeader}"></div>
+
+			<div class="account-container">
+				<div class="account-content">
+					<h2>Blog List</h2>
+					<div class="table-container">
+						<table class="booking-table">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>Title</th>
+									<th>Content</th>
+									<th>Images</th>
+									<th>Created At</th>
+									<th>Updated At</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="item : ${blogs}">
+									<td th:text="${item.id}"></td>
+									<td th:text="${item.title}"></td>
+									<td th:text="${item.content}"></td>
+									<td th:text="${item.images}"></td>
+									<td th:text="${item.createdAt}"></td>
+									<td th:text="${item.updatedAt}"></td>
+									<td>
+										<a class="btn btn-primary" th:href="@{admin/blogs/blogCreate}">Write</a>
+										<a class="btn btn-warning" th:href="@{admin/blogs/blogEdit}">Edit</a>
+										<a class="btn btn-danger">Delete</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../back/vendors/js/vendor.bundle.base.js"></script>
+	<script src="../back/vendors/chartjs/Chart.min.js"></script>
+	<script src="../back/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+	<script src="../back/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="../back/js/material.js"></script>
+	<script src="../back/js/misc.js"></script>
+	<script src="../back/js/dashboard.js"></script>
+</body>
+
+</html>

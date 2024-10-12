@@ -30,4 +30,18 @@ public class AdminController {
 		return Views.ADMIN_ACCOUNTS;
 	}
 
+	@GetMapping("/blogs/blogList")
+	public String blogList() {
+		return Views.ADMIN_BLOGS_LIST;
+	}
+	
+	@GetMapping("/blogs/blogCreate")
+	public String blogCreate() {
+		return Views.ADMIN_BLOGS_CREATE;
+	}
+	
+	@GetMapping("/blogs/blogEdit")
+	public String blogEdit() {
+		return Views.ADMIN_BLOGS_EDIT;
+	}
 }
