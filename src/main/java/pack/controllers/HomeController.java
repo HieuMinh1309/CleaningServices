@@ -20,9 +20,9 @@ public class HomeController {
 		return Views.MAIN_SERVICE;
 	}
 	
-	@GetMapping("/article")
-	public String article() {
-		return Views.MAIN_ARTICLE;
+	@GetMapping("/blog")
+	public String blog() {
+		return Views.MAIN_BLOG;
 	}
 	
 	@GetMapping("/about")

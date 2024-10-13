@@ -25,10 +25,37 @@ public class UserController {
 	@Autowired
 	UserRepository rep;
 
+	//-------------------- INDEX & ACCOUNT --------------------//
+
+	@GetMapping("/login")
+	public String login() {
+		return Views.USER_LOGIN;
+	}
+
+	@PostMapping("/checklogin")
+	public String chcklogin(@RequestParam("usrname") String username, @RequestParam("pw") String password,
+			HttpServletRequest request, Model model) {
+		User user = rep.findUserbyUsername(username);
+
+		if (user == null) {
+			model.addAttribute("loginError", "Username does not exist.");
+			return Views.USER_LOGIN;
+		}
+
+		if (!SecurityUtility.compareBcrypt(user.getPassword(), password)) {
+			model.addAttribute("loginError", "Incorrect password.");
+			return Views.USER_LOGIN;
+		}
+
+		request.getSession().setAttribute("usrId", user.getId());
+		request.getSession().setAttribute("username", user.getUsername());
+		return "redirect:/";
+	}
+
 	@GetMapping("/accounts")
 	public String accounts(HttpServletRequest request, Model model) {
-		 User user = rep.findUserbyUsername(request.getSession().getAttribute("username").toString());
-		 List<Order> orderList = rep.OrderList((int)request.getSession().getAttribute("usrId"));
+		User user = rep.findUserbyUsername(request.getSession().getAttribute("username").toString());
+		List<Order> orderList = rep.OrderList((int) request.getSession().getAttribute("usrId"));
 		model.addAttribute("user", user);
 		model.addAttribute("orders", orderList);
 		return Views.USER_ACCOUNTS;
@@ -67,35 +94,20 @@ public class UserController {
 		}
 	}
 
-	@GetMapping("/login")
-	public String login() {
-		return Views.USER_LOGIN;
+	@GetMapping("/edit_profile")
+	public String editProfile() {
+		return Views.USER_EDIT_PROFILE;
 	}
 
-	@PostMapping("/checklogin")
-	public String chcklogin(@RequestParam("usrname") String username, @RequestParam("pw") String password,
-			HttpServletRequest request, Model model) {
-		User user = rep.findUserbyUsername(username);
-
-		if (user == null) {
-			model.addAttribute("loginError", "Username does not exist.");
-			return Views.USER_LOGIN;
-		}
-
-		if (!SecurityUtility.compareBcrypt(user.getPassword(), password)) {
-			model.addAttribute("loginError", "Incorrect password.");
-			return Views.USER_LOGIN;
-		}
-
-		request.getSession().setAttribute("usrId", user.getId());
-		request.getSession().setAttribute("username", user.getUsername());
-		return "redirect:/";
+	@PostMapping("/editUser")
+	public String editUser() {
+		return "";
 	}
 
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
-	    request.getSession().invalidate();
-	    return "redirect:/user/login";
+		request.getSession().invalidate();
+		return "redirect:/user/login";
 	}
-	
+
 }

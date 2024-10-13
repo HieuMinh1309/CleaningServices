@@ -2,7 +2,7 @@ package pack.models;
 
 import java.sql.Date;
 
-public class Article {
+public class Blog {
 	private int id;
 	private String title;
 	private String content;
@@ -10,9 +10,9 @@ public class Article {
 	private Date createDate;
 	private Date updateDate;
 	
-	public Article() {}
+	public Blog() {}
 
-	public Article(int id, String title, String content, String images, Date createDate, Date updateDate) {
+	public Blog(int id, String title, String content, String images, Date createDate, Date updateDate) {
 		super();
 		this.id = id;
 		this.title = title;

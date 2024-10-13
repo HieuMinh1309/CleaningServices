@@ -19,6 +19,8 @@ import pack.utils.Views;
 public class StaffController {
 	@Autowired
 	StaffRepository rep;
+	
+	//-------------------- INDEX & ACCOUNT --------------------//
 
 	@GetMapping("")
 	public String index() {

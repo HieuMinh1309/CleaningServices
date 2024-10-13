@@ -6,9 +6,11 @@ public class Views {
 	public static String ADMIN_LOGIN = "admin/login";
 	public static String ADMIN_INDEX = "admin/index";
 	public static String ADMIN_ACCOUNTS = "admin/accounts";
-	public static String ADMIN_ORDERS = "admin/orders";
-	public static String ADMIN_STAFFS = "admin/staffs";
-	
+	// ADMIN/ORDERS
+	public static String ADMIN_ORDERS_LIST = "admin/orders/orderList";
+	// ADMIN/STAFFS
+	public static String ADMIN_STAFFS_LIST = "admin/staffs/staffList";
+	public static String ADMIN_STAFFS_EDIT = "admin/staffs/staffEdit";
 	// ADMIN/BLOGS
 	public static String ADMIN_BLOGS_LIST = "admin/blogs/blogList";
 	public static String ADMIN_BLOGS_CREATE = "admin/blogs/blogCreate";
@@ -30,7 +32,7 @@ public class Views {
 	public static String MAIN_INDEX = "main/index";
 	public static String MAIN_SERVICE = "main/service";
 	public static String MAIN_ABOUT = "main/about";
-	public static String MAIN_ARTICLE = "main/article";
+	public static String MAIN_BLOG = "main/article";
 	public static String MAIN_CONTACT = "main/contact";
 
 	// ADMIN
@@ -53,14 +55,14 @@ public class Views {
 	public static String COL_USER_IMAGES = "images";
 	public static String COL_USER_CREATEDATE = "created_at";
 
-	// ARTICLES
-	public static String TBL_ARTICLE = "articles";
-	public static String COL_ARTICLE_ID = "id";
-	public static String COL_ARTICLE_TITLE = "title";
-	public static String COL_ARTICLE_CONTENT = "content";
-	public static String COL_ARTICLE_IMAGES = "images";
-	public static String COL_ARTICLE_CREATEDATE = "created_at";
-	public static String COL_ARTICLE_UPDATE_DATE = "updated_at";
+	// BLOGS
+	public static String TBL_BLOG = "blogs";
+	public static String COL_BLOG_ID = "id";
+	public static String COL_BLOG_TITLE = "title";
+	public static String COL_BLOG_CONTENT = "content";
+	public static String COL_BLOG_IMAGES = "images";
+	public static String COL_BLOG_CREATEDATE = "created_at";
+	public static String COL_BLOG_UPDATE_DATE = "updated_at";
 
 	// SERVICES
 
