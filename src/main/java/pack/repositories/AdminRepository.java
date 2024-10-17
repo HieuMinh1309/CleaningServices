@@ -96,6 +96,12 @@ public class AdminRepository {
 		}
 	}
 
+	/***
+	 * get data from table tbl_blog by id
+	 * 
+	 * @return a blog
+	 */
+
 	public Blog findBlogById(int id) {
 		try {
 			String str_query = String.format("select * from %s where %s=?", Views.TBL_BLOG, Views.COL_BLOG_ID);
@@ -105,11 +111,17 @@ public class AdminRepository {
 		}
 	}
 
-	public String newBlog(Blog article) {
+	/***
+	 * create new blog
+	 * 
+	 * @return new blog
+	 */
+
+	public String newBlog(Blog blog) {
 		try {
-			String str_query = String.format("insert into %s values(?,?,?)", Views.TBL_BLOG);
+			String str_query = String.format("insert into %s (title, content, images) values(?,?,?)", Views.TBL_BLOG);
 			int rowaccept = db.update(str_query,
-					new Object[] { article.getTitle(), article.getContent(), article.getImages() });
+					new Object[] { blog.getTitle(), blog.getContent(), blog.getImages() });
 			if (rowaccept == 1) {
 				return "success";
 			}
@@ -120,12 +132,18 @@ public class AdminRepository {
 		return null;
 	}
 
-	public String editBlog(Blog article) {
+	/***
+	 * edit a blog
+	 * 
+	 * @return edited blog
+	 */
+
+	public String editBlog(Blog blog) {
 		try {
 			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=GETDATE() where id=?", Views.TBL_BLOG,
 					Views.COL_BLOG_TITLE, Views.COL_BLOG_CONTENT, Views.COL_BLOG_IMAGES, Views.COL_BLOG_UPDATE_DATE);
 			int rowaccept = db.update(str_query,
-					new Object[] { article.getTitle(), article.getContent(), article.getImages() });
+					new Object[] { blog.getTitle(), blog.getContent(), blog.getImages(), blog.getUpdateDate() });
 			if (rowaccept == 1) {
 				return "success";
 			}
@@ -136,17 +154,22 @@ public class AdminRepository {
 		return null;
 	}
 
+	/***
+	 * delete a blog
+	 * 
+	 * @return deleted blog
+	 */
+
 	public String deleteBlog(int id) {
 		try {
-			int rowaccept = db.update("delete from %s where %s=?", Views.TBL_BLOG, Views.COL_BLOG_ID,
-					new Object[] { id });
+			String str_query = String.format("delete from %s where %s=?", Views.TBL_BLOG, Views.COL_BLOG_ID);
+			int rowaccept = db.update(str_query, new Object[] { id });
 			if (rowaccept == 1) {
 				return "success";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
 		}
-		return null;
 	}
 }

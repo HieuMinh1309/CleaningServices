@@ -23252,11 +23252,11 @@ footer .vertical-divider {
 }
 
 .account-container input[type="text"], .account-container input[type="email"],
-	.account-container input[type="password"], .account-container button {
+	.account-container input[type="password"], .account-container input[type="file"], .account-container textarea, .account-container button {
 	width: 100%;
 	padding: 15px;
 	margin-bottom: 15px;
-	border: 1px solid rgba(0, 83, 156, 0.3);
+	border: 1px solid rgba(0, 83, 156, 0.1);
 	border-radius: 5px;
 }
 

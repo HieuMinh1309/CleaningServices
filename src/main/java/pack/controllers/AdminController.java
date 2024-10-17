@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +30,15 @@ public class AdminController {
 	AdminRepository rep;
 	// -------------------- INDEX & ACCOUNT --------------------//
 
-	@GetMapping("")
-	public String index(HttpServletRequest req, Model model) {
+	public Admin getAdmin(HttpServletRequest req, Model model) {
 		Admin admin = rep.findAdminById((int) req.getSession().getAttribute("adminId"));
 		model.addAttribute("admin", admin);
+		return admin;
+	}
+
+	@GetMapping("")
+	public String index(HttpServletRequest req, Model model) {
+		Admin admin = getAdmin(req, model);
 		return Views.ADMIN_INDEX;
 	}
 
@@ -76,8 +80,6 @@ public class AdminController {
 
 	@GetMapping("/blogs/blogList")
 	public String blogList(HttpServletRequest req, Model model) {
-		Admin admin = rep.findAdminById((int) req.getSession().getAttribute("adminId"));
-		model.addAttribute("admin", admin);
 		List<Blog> blog = rep.getBlogs();
 		model.addAttribute("blogs", blog);
 		return Views.ADMIN_BLOGS_LIST;
@@ -85,16 +87,14 @@ public class AdminController {
 
 	@GetMapping("/blogs/blogCreate")
 	public String blogCreate(HttpServletRequest req, Model model) {
-		Admin admin = rep.findAdminById((int) req.getSession().getAttribute("adminId"));
-		model.addAttribute("admin", admin);
 		model.addAttribute("new_item", new Blog());
 		return Views.ADMIN_BLOGS_CREATE;
 	}
 
-	@PostMapping("/blogs/write")
-	public String writeBlog(@ModelAttribute("new_item") Blog art, HttpServletRequest req, Model model) {
+	@PostMapping("/blogs/create")
+	public String writeBlog(@ModelAttribute("new_item") Blog blog, HttpServletRequest req, Model model) {
 		try {
-			String newBlog = rep.newBlog(art);
+			String newBlog = rep.newBlog(blog);
 			if (newBlog.equals("success")) {
 				return "redirect:/admin/blogs/blogList";
 			}
@@ -107,7 +107,7 @@ public class AdminController {
 		}
 	}
 
-	@GetMapping("/blogs/blogEdit/{id}")
+	@GetMapping("/blogs/blogEdit")
 	public String blogEdit(int id, Model model) {
 		Blog blog = rep.findBlogById(id);
 		if (blog != null) {
@@ -134,26 +134,10 @@ public class AdminController {
 		}
 	}
 
-	@PostMapping("/blogs/delete/{id}")
-	@ResponseBody
-	public ResponseEntity<?> deleteBlog(@RequestBody Map<String, Object> payload) {
-		int id = (int) payload.get("id");
-		Blog blog = rep.findBlogById(id);
-		if (blog != null) {
-			try {
-				String delBlog = rep.deleteBlog(id);
-				if (delBlog.equals("success")) {
-					return ResponseEntity.ok("Blog deleted successfully");
-				} else {
-					return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete blog");
-				}
-			} catch (Exception e) {
-				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-						.body("Blog deletion failed: " + e.getMessage());
-			}
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Blog not found");
-		}
+	@PostMapping("/blogs/delete")
+	public String delete(int id) {
+		rep.deleteBlog(id);
+		return "redirect:/admin/blogs/blogList";
 	}
 
 	// -------------------- ORDERS --------------------//
