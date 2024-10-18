@@ -6,10 +6,15 @@ public class Views {
 	public static String ADMIN_LOGIN = "admin/login";
 	public static String ADMIN_INDEX = "admin/index";
 	public static String ADMIN_ACCOUNTS = "admin/accounts";
+	// ADMIN/SERVICES
+	public static String ADMIN_SERVICES_LIST = "admin/services/serviceList";
+	public static String ADMIN_SERVICES_CREATE = "admin/services/serviceCreate";
+	public static String ADMIN_SERVICES_EDIT = "admin/services/serviceEdit";
 	// ADMIN/ORDERS
 	public static String ADMIN_ORDERS_LIST = "admin/orders/orderList";
 	// ADMIN/STAFFS
 	public static String ADMIN_STAFFS_LIST = "admin/staffs/staffList";
+	public static String ADMIN_STAFFS_INFO = "admin/staffs/staffInfo";
 	public static String ADMIN_STAFFS_EDIT = "admin/staffs/staffEdit";
 	// ADMIN/BLOGS
 	public static String ADMIN_BLOGS_LIST = "admin/blogs/blogList";
@@ -65,13 +70,13 @@ public class Views {
 	public static String COL_BLOG_UPDATE_DATE = "updated_at";
 
 	// SERVICES
-
 	public static String TBL_SERVICE = "services";
 	public static String COL_SERVICE_ID = "id";
 	public static String COL_SERVICE_NAME = "service_name";
 	public static String COL_SERVICE_DESCRIPTION = "description";
 	public static String COL_SERVICE_BASE_PRICE = "base_price";
 	public static String COL_SERVICE_DURATION = "duration";
+	public static String COL_SERVICE_IMAGES = "images";
 
 	// ORDERS
 	public static String TBL_ORDER = "orders";
@@ -108,7 +113,7 @@ public class Views {
 	public static String COL_STAFFS_PASSWORD = "password";
 	public static String COL_STAFFS_EMAIL = "email";
 	public static String COL_STAFFS_PHONE = "phone";
-	public static String COL_STAFFS_JOB_LIMIT = "job_limit";
+	public static String COL_STAFFS_JOB_OCCUPIED = "job_occupied";
 	public static String COL_STAFFS_IMAGES = "images";
 	public static String COL_STAFFS_CREATEDATE = "created_at";
 	public static String COL_STAFFS_STATUS = "status";

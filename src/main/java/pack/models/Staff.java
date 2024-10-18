@@ -8,14 +8,14 @@ public class Staff {
 	private String password;
 	private String email;
 	private String phone;
-	private int jobLimit;
+	private int jobOccupied;
 	private String images;
 	private Date createDate;
 	private String status;
 	
 	public Staff() {}
 
-	public Staff(int id, String username, String password, String email, String phone, int jobLimit, String images,
+	public Staff(int id, String username, String password, String email, String phone, int jobOccupied, String images,
 			Date createDate, String status) {
 		super();
 		this.id = id;
@@ -23,7 +23,7 @@ public class Staff {
 		this.password = password;
 		this.email = email;
 		this.phone = phone;
-		this.jobLimit = jobLimit;
+		this.jobOccupied = jobOccupied;
 		this.images = images;
 		this.createDate = createDate;
 		this.status = status;
@@ -69,12 +69,12 @@ public class Staff {
 		this.phone = phone;
 	}
 
-	public int getJobLimit() {
-		return jobLimit;
+	public int getJobOccupied() {
+		return jobOccupied;
 	}
 
-	public void setJobLimit(int jobLimit) {
-		this.jobLimit = jobLimit;
+	public void setJobOccupied(int jobOccupied) {
+		this.jobOccupied = jobOccupied;
 	}
 
 	public String getImages() {

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-	<title>Cleanex - Staff Management</title>
+	<title>Cleanex - Service Management</title>
 
 	<link rel="stylesheet" href="../../back/vendors/mdi/css/materialdesignicons.min.css" />
 	<link rel="stylesheet" href="../../back/vendors/css/vendor.bundle.base.css" />
@@ -65,41 +65,41 @@
 		<div th:replace="~{admin/fragment/header::adminHeader}"></div>
 		<div class="mx-5 mt-5">
 			<div class="col-12">
-				<h2 class="mb-4 col-2">Staff List</h2>
+				<div class="row">
+					<h2 class="mb-4 col-2">Service List</h2>
+					<a class="btn btn-primary mb-4 col-1" th:href="@{/admin/services/serviceCreate}">Create</a>
+					<br class="col-9" />
+				</div>
 				<div class="table-responsive border-1">
 					<table class="table table-hover">
 						<thead>
-							<tr>
-								<th>No.</th>
-								<th>Username</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Image</th>
-								<th>Create Date</th>
-								<th>Status</th>
-								<th>Job Occupied</th>
-								<th>Actions</th>
+							<th>No.</th>
+							<th>Service Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Duration</th>
+							<th>Image</th>
+							<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="item : ${staffs}">
+							<tr th:each="item : ${services}">
 								<td th:text="${item.id}"></td>
-								<td th:text="${item.username}"></td>
-								<td th:text="${item.email}"></td>
-								<td th:text="${item.phone}"></td>
+								<td th:text="${item.serName}"></td>
+								<td th:text="${item.description}"></td>
+								<td th:text="${item.basePrice}"></td>
+								<td th:text="${item.duration}"></td>
 								<td>
-									<img th:if="${item.images != null}" th:src="'/uploads/'+${item.images}" />
+									<img th:if="${item.images != null}" th:src="'/uploads/'+${item.image}" />
 									<img th:if="${item.images == null}" th:src="'../../front/img/none=img.png'" />
 								</td>
-								<td th:text="${item.createDate}"></td>
-								<td th:text="${item.status}"></td>
-								<td th:text="${item.jobOccupied}"></td>
 								<td>
-									<a class="btn btn-outline-info" th:href="@{/admin/staffs/staffInfo(id=${item.id})}">Info</a>
 									<a class="btn btn-warning"
-										th:href="@{/admin/staffs/assignJob(id=${item.id})}">Assign Job</a>
-									<a class="btn btn-outline-danger"
-										th:href="@{/admin/staffs/replaceStaff(id=${item.id})}">Replace Staff</a>
+										th:href="@{/admin/services/serviceEdit(id=${item.id})}">Edit</a>
+									<form th:action="@{/admin/services/delete}" method="post" style="display: inline;">
+										<input type="hidden" name="id" th:value="${item.id}" />
+										<button type="submit" class="btn btn-danger">Delete</button>
+									</form>
 								</td>
 							</tr>
 						</tbody>

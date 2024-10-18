@@ -8,9 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import pack.models.Admin;
 import pack.models.Blog;
+import pack.models.Order;
 import pack.models.Service;
+import pack.models.Staff;
 import pack.modelviews.Admin_mapper;
 import pack.modelviews.Blog_mapper;
+import pack.modelviews.Order_mapper;
+import pack.modelviews.Service_mapper;
+import pack.modelviews.Staff_mapper;
 import pack.utils.Views;
 
 @Repository
@@ -36,53 +41,78 @@ public class AdminRepository {
 		}
 	}
 
+	/***
+	 * get all data from table services
+	 * 
+	 * @return list service
+	 */
+
+	public List<Service> getServices() {
+		try {
+			String str_query = String.format("select * from %s", Views.TBL_SERVICE);
+			return db.query(str_query, new Service_mapper());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/***
+	 * get data from table service by id
+	 * 
+	 * @return a service
+	 */
+
+	public Service findServiceById(int id) {
+		try {
+			String str_query = String.format("select * from %s where %s=?", Views.TBL_SERVICE, Views.COL_SERVICE_ID);
+			return db.queryForObject(str_query, new Service_mapper(), new Object[] { id });
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	public String newService(Service service) {
 		try {
-			String str_query = String.format("insert into %s values(?,?,?,?)", Views.TBL_SERVICE);
-			int rowaccept = db.update(str_query, new Object[] { service.getSerName(), service.getDescription(),
-					service.getBasePrice(), service.getDuration() });
+			String str_query = String.format("insert into %s values(?,?,?,?,?)", Views.TBL_SERVICE);
+			int rowaccept = db.update(str_query, new Service_mapper());
 			if (rowaccept == 1) {
 				return "success";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
 		}
-		return null;
 	}
 
 	public String editService(Service service) {
 		try {
-			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=? where %s=?", Views.TBL_SERVICE,
+			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=?, %s=? where %s=?", Views.TBL_SERVICE,
 					Views.COL_SERVICE_NAME, Views.COL_SERVICE_DESCRIPTION, Views.COL_SERVICE_BASE_PRICE,
-					Views.COL_SERVICE_DURATION, Views.COL_SERVICE_ID);
-			int rowaccept = db.update(str_query, new Object[] { service.getSerName(), service.getDescription(),
-					service.getBasePrice(), service.getDuration(), service.getId() });
+					Views.COL_SERVICE_DURATION, Views.COL_SERVICE_ID, Views.COL_SERVICE_IMAGES);
+			int rowaccept = db.update(str_query, new Service_mapper());
 			if (rowaccept == 1) {
 				return "success";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
 		}
-		return null;
 	}
 
 	public String deleteService(int id) {
 		try {
-			int rowaccept = db.update("delete from services where id = ?", new Object[] { id });
+			int rowaccept = db.update("delete from services where id=?", new Object[] { id });
 			if (rowaccept == 1) {
 				return "success";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
 		}
-		return null;
 	}
 
 	/***
-	 * get all data from table tbl_blog
+	 * get all data from table blog
 	 * 
 	 * @return list blog
 	 */
@@ -97,7 +127,7 @@ public class AdminRepository {
 	}
 
 	/***
-	 * get data from table tbl_blog by id
+	 * get data from table blog by id
 	 * 
 	 * @return a blog
 	 */
@@ -120,16 +150,14 @@ public class AdminRepository {
 	public String newBlog(Blog blog) {
 		try {
 			String str_query = String.format("insert into %s (title, content, images) values(?,?,?)", Views.TBL_BLOG);
-			int rowaccept = db.update(str_query,
-					new Object[] { blog.getTitle(), blog.getContent(), blog.getImages() });
+			int rowaccept = db.update(str_query, new Object[] { blog.getTitle(), blog.getContent(), blog.getImages() });
 			if (rowaccept == 1) {
 				return "success";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
 		}
-		return null;
 	}
 
 	/***
@@ -147,11 +175,10 @@ public class AdminRepository {
 			if (rowaccept == 1) {
 				return "success";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
 		}
-		return null;
 	}
 
 	/***
@@ -170,6 +197,36 @@ public class AdminRepository {
 			return "failed";
 		} catch (Exception e) {
 			return e.getMessage();
+		}
+	}
+
+	/***
+	 * get all data from table staffs
+	 * 
+	 * @return list staff
+	 */
+
+	public List<Staff> getStaffs() {
+		try {
+			String str_query = String.format("select * from %s", Views.TBL_STAFFS);
+			return db.query(str_query, new Staff_mapper());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/***
+	 * get all data from table orders
+	 * 
+	 * @return list order
+	 */
+
+	public List<Order> getOrders() {
+		try {
+			String str_query = String.format("select * from %s", Views.TBL_SERVICE);
+			return db.query(str_query, new Order_mapper());
+		} catch (Exception e) {
+			return null;
 		}
 	}
 }

@@ -90,7 +90,7 @@
 								<td th:text="${item.content}"></td>
 								<td>
 									<img th:if="${item.images != null}" th:src="'/uploads/'+${item.images}" />
-									<img th:if="${item.images == null}" th:src="'../front/img/none=img.png'" />
+									<img th:if="${item.images == null}" th:src="'../../front/img/none=img.png'" />
 								</td>
 								<td th:text="${item.createDate}"></td>
 								<td th:text="${item.updateDate}"></td>

@@ -22855,15 +22855,10 @@ address p {
   }
 }
 
-.mdc-top-app-bar .mdc-top-app-bar__section-right .menu-profile button {
-  width: auto;
-  letter-spacing: normal;
-}
-
 .mdc-top-app-bar .mdc-top-app-bar__section-right .menu-profile button .figure {
   overflow: hidden;
   margin: 0;
-  height: 25px;
+  height: 26px;
 }
 
 .mdc-top-app-bar .mdc-top-app-bar__section-right .menu-profile button .figure img {
@@ -23251,7 +23246,7 @@ footer .vertical-divider {
 	margin-top: 20px;
 }
 
-.account-container input[type="text"], .account-container input[type="email"],
+.account-container input[type="text"], .account-container input[type="email"], .account-container input[type="number"],
 	.account-container input[type="password"], .account-container input[type="file"], .account-container textarea, .account-container button {
 	width: 100%;
 	padding: 15px;
@@ -23260,7 +23255,7 @@ footer .vertical-divider {
 	border-radius: 5px;
 }
 
-.account-container input[type="text"], .account-container input[type="email"],
+.account-container input[type="text"], .account-container input[type="email"], .account-container input[type="number"],
 	.account-container input[type="password"] {
 	background: rgba(0, 83, 156, 0.1);
 	color: #00539C;
