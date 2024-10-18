@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Validate Page</title>
+	<style>
+		.error-message {
+			color: red;
+			font-weight: 500;
+		}
+	</style>
+</head>
+
+<body>
+	<form th:action="@{/user/verification}" method="POST">
+		<div th:if="${error}" class="error-message" th:text="${error}"></div>
+		<label for="code"></label>
+		<input type="text" id="otp" name="otp" required maxlength="4"
+			oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);">
+		<button type="submit">Submit</button>
+	</form>
+	<script>
+		setTimeout(function () {
+			document.querySelector('.error-message').innerText = '';
+		}, 6000);
+	</script>
+</body>
+
+</html>
