@@ -1,5 +1,6 @@
 package pack.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,15 @@ public class UserRepository {
 		}
 	}
 
+	public User findUserbyId(int id) {
+		try {
+			String str_query = String.format("select * from %s where %s = ?", Views.TBL_USER, Views.COL_USER_ID);
+			return db.queryForObject(str_query, new User_mapper(), new Object[] { id });
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	public String newUser(User user) {
 		try {
 			String str_query = String.format(
@@ -46,10 +56,83 @@ public class UserRepository {
 		}
 	}
 
+	public User checkPhoneNumberExists(String phoneNumber) {
+		try {
+			String str_query = String.format("select * from %s Where %s = ?", Views.TBL_USER, Views.COL_USER_PHONE);
+			return db.queryForObject(str_query, new User_mapper(), new Object[] { phoneNumber });
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public String changePass(String phoneNumber, String password) {
+		try {
+			String str_query = String.format("update %s set %s = ? where %s = ?", Views.TBL_USER,
+					Views.COL_USER_PASSWORD, Views.COL_USER_PHONE);
+			String hashpassword = SecurityUtility.encryptBcrypt(password);
+			int rowaccept = db.update(str_query, new Object[] { hashpassword, phoneNumber });
+			if (rowaccept == 1) {
+				return "success";
+			}
+			return "failed";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+
+	public String editProfile(User user) {
+		try {
+			StringBuilder queryBuilder = new StringBuilder("UPDATE " + Views.TBL_USER + " SET ");
+			List<Object> params = new ArrayList<>();
+
+			if (user.getFullname() != null && !user.getFullname().isEmpty()) {
+				queryBuilder.append("fullname = ?, ");
+				params.add(user.getFullname());
+			}
+			if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+				queryBuilder.append("password = ?, ");
+				String hashPassword = SecurityUtility.encryptBcrypt(user.getPassword());
+				params.add(hashPassword);
+			}
+			if (user.getEmail() != null && !user.getEmail().isEmpty()) {
+				queryBuilder.append("email = ?, ");
+				params.add(user.getEmail());
+			}
+			if (user.getPhone() != null && !user.getPhone().isEmpty()) {
+				queryBuilder.append("phone = ?, ");
+				params.add(user.getPhone());
+			}
+			if (user.getAddress() != null && !user.getAddress().isEmpty()) {
+				queryBuilder.append("address = ?, ");
+				params.add(user.getAddress());
+			}
+			if (user.getImage() != null && !user.getImage().isEmpty()) {
+				queryBuilder.append("images = ?, ");
+				params.add(user.getImage());
+			}
+
+			if (params.isEmpty()) {
+				return "No fields to update";
+			}
+
+			queryBuilder.setLength(queryBuilder.length() - 2);
+			queryBuilder.append(" WHERE " + Views.COL_USER_ID + " = ?");
+			params.add(user.getId());
+
+			int rowsAffected = db.update(queryBuilder.toString(), params.toArray());
+			return rowsAffected == 1 ? "success" : "failed";
+		} catch (DuplicateKeyException e) {
+			throw new IllegalArgumentException("Some information(username, email, phone) may already exists.");
+		} catch (Exception e) {
+			return "Error: " + e.getMessage();
+		}
+	}
+
 	// Orders
 	public List<Order> OrderList(int id) {
 		try {
-			String str_query = String.format("select * from %s where %s=?", Views.TBL_ORDER, Views.COL_ORDERS_USER_ID);
+			String str_query = String.format("select * from %s where %s=?", Views.TBL_ORDER,
+					Views.COL_ORDERS_USER_ID);
 			return db.query(str_query, new Order_mapper(), new Object[] { id });
 		} catch (Exception e) {
 			return null;

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Forgot Password page</title>
+	<style>
+		.error-message {
+			color: red;
+			font-weight: 500;
+		}
+	</style>
+</head>
+
+<body>
+	<form th:action="@{/user/getOTP}" method="POST">
+		<div th:if="${pageError}" class="error-message" th:text="${pageError}"></div>
+		<label for="phone">Enter your phone number:</label>
+		<input type="text" id="phoneNumber" name="phone" required>
+		<button type="submit">Submit</button>
+	</form>
+	<script>
+		setTimeout(function () {
+			document.querySelector('.error-message').innerText = '';
+		}, 6000);
+	</script>
+</body>
+
+</html>
