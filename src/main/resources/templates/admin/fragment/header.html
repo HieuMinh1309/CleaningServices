@@ -1,59 +1,66 @@
-<header class="mdc-top-app-bar" th:fragment="adminHeader">
-	<div class="mdc-top-app-bar__row">
-		<div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-			<a th:href="@{/admin}" class="mdc-top-app-bar__title">Cleanex - Dashboard</span>
-		</div>
-		<div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
-			<div class="menu-button-container menu-profile d-none d-md-block">
-				<button class="mdc-button mdc-menu-button">
-					<span class="d-flex align-items-center">
-						<span class="figure">
-							<img src="/back/images/none-user.png" />
-						</span>
-					</span>
-				</button>
-				<div class="mdc-menu mdc-menu-surface" tabindex="-1">
-					<ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-						<li class="mdc-list-item" role="menuitem">
-							<div class="item-thumbnail item-thumbnail-icon-only">
-								<i class="mdi mdi-account-edit-outline text-primary"></i>
-							</div>
-							<div class="item-content d-flex align-items-start flex-column justify-content-center">
-								<a href="@{/admin/accounts}" class="item-subject font-weight-normal">Your profile</a>
-							</div>
-						</li>
-						<li class="mdc-list-item" role="menuitem">
-							<div class="item-thumbnail item-thumbnail-icon-only">
-								<i class="mdi mdi-logout text-primary"></i>
-							</div>
-							<div class="item-content d-flex align-items-start flex-column justify-content-center">
-								<a th:href="@{/admin/logout}" class="item-subject font-weight-normal">Logout</a>
-							</div>
-						</li>
-					</ul>
+<header class="header" th:fragment="adminHeader">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-5 col-md-5 col-6">
+				<div class="header-left d-flex align-items-center">
+					<div class="menu-toggle-btn mr-15">
+						<button id="menu-toggle" class="main-btn primary-btn btn-hover">
+							<i class="lni lni-chevron-left me-2"></i> Menu
+						</button>
+					</div>
+					<div class="header-search d-none d-md-flex">
+						<form action="#">
+							<input type="text" placeholder="Search..." />
+							<button>
+								<i class="lni lni-search-alt"></i>
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
-			
-			<div class="divider d-none d-md-block"></div>
+			<div class="col-lg-7 col-md-7 col-6">
+				<div class="header-right">
+					<div class="profile-box ml-15">
+						<button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="profile-info">
+								<div class="info">
+									<div class="btn btn-outline-secondary">
+										<h6 class="fw-500">Your Account</h6>
+									</div>
+								</div>
+							</div>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
+							<li>
+								<div class="author-info flex items-center !p-1">
+									<div class="image">
+										<img th:src="'../../front/img/none-user.png'" />
+									</div>
+									<div class="content">
+										<h4 class="text-sm">Admin</h4>
+										<h5
+											class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs">
+											cleanex@gmail.com
+										</h5>
+									</div>
+								</div>
 
-			<!-- Order Notification -->
-			<div class="menu-button-container">
-				<button class="mdc-button mdc-menu-button">
-					<i class="mdi mdi-bell"></i>
-				</button>
-				<div class="mdc-menu mdc-menu-surface" tabindex="-1">
-					<h6 class="title"> <i class="mdi mdi-bell-outline mr-2 tx-16"></i> Notifications</h6>
-					<ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-						<li class="mdc-list-item" role="menuitem">
-							<div class="item-thumbnail item-thumbnail-icon">
-								<i class="mdi mdi-email-outline"></i>
-							</div>
-							<div class="item-content d-flex align-items-start flex-column justify-content-center">
-								<h6 class="item-subject font-weight-normal">You received a new message</h6>
-								<small class="text-muted"> 6 min ago </small>
-							</div>
-						</li>
-					</ul>
+							</li>
+							<li class="divider"></li>
+
+							<li>
+								<a th:href="@{/admin/accounts}">
+									<i class="lni lni-user"></i>View Profile
+								</a>
+							</li>
+							<li>
+								<a th:href="@{/admin/logout}">
+									<i class="lni lni-exit"></i>Sign Out
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

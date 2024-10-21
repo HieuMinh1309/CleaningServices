@@ -3,106 +3,69 @@
 
 <head>
 	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+	<link rel="shortcut icon" href="../back/images/favicon.svg" type="image/x-icon" />
 	<title>Cleanex - Admin Dashboard</title>
 
-	<link rel="stylesheet" href="../back/vendors/mdi/css/materialdesignicons.min.css" />
-	<link rel="stylesheet" href="../back/vendors/css/vendor.bundle.base.css" />
-	<link rel="stylesheet" href="../back/vendors/flag-icon-css/css/flag-icon.min.css" />
-	<link rel="stylesheet" href="../back/vendors/jvectormap/jquery-jvectormap.css" />
-	<link rel="stylesheet" href="../back/css/demo/style.css" />
+	<link rel="stylesheet" href="../back/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../back/css/lineicons.css" />
+	<link rel="stylesheet" href="../back/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="../back/css/fullcalendar.css" />
+	<link rel="stylesheet" href="../back/css/main.css" />
 </head>
 
 <body>
-	<script src="../back/js/preloader.js"></script>
-	<div class="body-wrapper">
-		<div class="main-wrapper mdc-drawer-app-content">
+	<div id="preloader">
+		<div class="spinner"></div>
+	</div>
+	<!-- ASIDE -->
+	<aside class="sidebar-nav-wrapper" th:replace="~{admin/fragment/aside::adminAside}"></aside>
 
-			<!-- HEADER -->
-			<div th:replace="~{admin/fragment/header::adminHeader}"></div>
+	<div class="overlay"></div>
+	<main class="main-wrapper">
 
-			<div class="page-wrapper mdc-toolbar-fixed-adjust">
-				<main class="content-wrapper">
-					<div class="mdc-layout-grid">
-						<div class="mdc-layout-grid__inner">
-							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
-								th:href="@{/admin/services/serviceList}">
-								<div class="mdc-card info-card info-card--success">
-									<div class="card-inner">
-										<h5 class="card-title">Services</h5>
-										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Dịch vụ hiện có</h5>
-										<div class="card-icon-wrapper">
-											<svg xmlns="http://www.w3.org/2000/svg" height="24px"
-												viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-												<path
-													d="M120-40v-280q0-83 58.5-141.5T320-520h40v-320q0-33 23.5-56.5T440-920h80q33 0 56.5 23.5T600-840v320h40q83 0 141.5 58.5T840-320v280H120Zm80-80h80v-120q0-17 11.5-28.5T320-280q17 0 28.5 11.5T360-240v120h80v-120q0-17 11.5-28.5T480-280q17 0 28.5 11.5T520-240v120h80v-120q0-17 11.5-28.5T640-280q17 0 28.5 11.5T680-240v120h80v-200q0-50-35-85t-85-35H320q-50 0-85 35t-35 85v200Zm320-400v-320h-80v320h80Zm0 0h-80 80Z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
-							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
-								th:href="@{/admin/staffs/staffList}">
-								<div class="mdc-card info-card info-card--danger">
-									<div class="card-inner">
-										<h5 class="card-title">Available Staffs</h5>
-										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Nhân viên chưa phân công
-										</h5>
-										<div class="card-icon-wrapper">
-											<i class="material-icons">group</i>
-										</div>
-									</div>
-								</div>
-							</a>
-							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
-								th:href="@{/admin/orders/orderList}">
-								<div class="mdc-card info-card info-card--primary">
-									<div class="card-inner">
-										<h5 class="card-title">Client's Orders</h5>
-										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Đơn đặt của khách hàng
-											chưa có nhân viên</h5>
-										<div class="card-icon-wrapper">
-											<svg xmlns="http://www.w3.org/2000/svg" height="30px"
-												viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
-												<path
-													d="M160-160v-516L82-846l72-34 94 202h464l94-202 72 34-78 170v516H160Zm240-280h160q17 0 28.5-11.5T600-480q0-17-11.5-28.5T560-520H400q-17 0-28.5 11.5T360-480q0 17 11.5 28.5T400-440ZM240-240h480v-358H240v358Zm0 0v-358 358Z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
-							<a class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet"
-								th:href="@{/admin/blogs/blogList}">
-								<div class="mdc-card info-card info-card--info">
-									<div class="card-inner">
-										<h5 class="card-title">Blogs</h5>
-										<h5 class="font-weight-light pb-2 mb-1 border-bottom">Tổng số blog hiện tại</h5>
-										<div class="card-icon-wrapper">
-											<svg xmlns="http://www.w3.org/2000/svg" height="30px"
-												viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
-												<path
-													d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
+		<!-- HEADER -->
+		<header th:replace="~{admin/fragment/header::adminHeader}"></header>
+
+		<section class="section">
+			<div class="container-fluid">
+				<div class="title-wrapper pt-30">
+					<div class="row align-items-center">
+						<div class="col-md-6">
+							<div class="title">
+								<h2>Dashboard</h2>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="breadcrumb-wrapper">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="#0">Dashboard</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">
+											Page
+										</li>
+									</ol>
+								</nav>
+							</div>
 						</div>
 					</div>
-				</main>
+				</div>
 			</div>
-		</div>
-	</div>
+		</section>
+	</main>
 
-	<script src="../back/vendors/js/vendor.bundle.base.js"></script>
-	<script src="../back/vendors/chartjs/Chart.min.js"></script>
-	<script src="../back/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-	<script src="../back/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="../back/js/material.js"></script>
-	<script src="../back/js/misc.js"></script>
-	<script src="../back/js/dashboard.js"></script>
+	<script src="../back/js/bootstrap.bundle.min.js"></script>
+	<script src="../back/js/Chart.min.js"></script>
+	<script src="../back/js/dynamic-pie-chart.js"></script>
+	<script src="../back/js/moment.min.js"></script>
+	<script src="../back/js/fullcalendar.js"></script>
+	<script src="../back/js/jvectormap.min.js"></script>
+	<script src="../back/js/world-merc.js"></script>
+	<script src="../back/js/polyfill.js"></script>
+	<script src="../back/js/main.js"></script>
 </body>
 
 </html>

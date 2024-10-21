@@ -57,7 +57,7 @@ public class Views {
 	public static String COL_USER_EMAIL = "email";
 	public static String COL_USER_PHONE = "phone";
 	public static String COL_USER_ADDRESS = "address";
-	public static String COL_USER_IMAGES = "images";
+	public static String COL_USER_IMAGES = "image";
 	public static String COL_USER_CREATEDATE = "created_at";
 
 	// BLOGS
@@ -65,7 +65,7 @@ public class Views {
 	public static String COL_BLOG_ID = "id";
 	public static String COL_BLOG_TITLE = "title";
 	public static String COL_BLOG_CONTENT = "content";
-	public static String COL_BLOG_IMAGES = "images";
+	public static String COL_BLOG_IMAGES = "image";
 	public static String COL_BLOG_CREATEDATE = "created_at";
 	public static String COL_BLOG_UPDATE_DATE = "updated_at";
 
@@ -76,7 +76,7 @@ public class Views {
 	public static String COL_SERVICE_DESCRIPTION = "description";
 	public static String COL_SERVICE_BASE_PRICE = "base_price";
 	public static String COL_SERVICE_DURATION = "duration";
-	public static String COL_SERVICE_IMAGES = "images";
+	public static String COL_SERVICE_IMAGES = "image";
 
 	// ORDERS
 	public static String TBL_ORDER = "orders";
@@ -84,7 +84,6 @@ public class Views {
 	public static String COL_ORDERS_USER_ID = "user_id";
 	public static String COL_ORDERS_PRICE = "price";
 	public static String COL_ORDERS_START_DATE = "start_date";
-	public static String COL_ORDERS_CREATEDATE = "created_at";
 	public static String COL_ORDERS_STATUS = "status";
 
 	// ORDER_DETAILS
@@ -102,7 +101,7 @@ public class Views {
 	public static String TBL_CONFIRM_IMAGES = "confirm_images";
 	public static String COL_CONFIRM_IMAGES_ID = "id";
 	public static String COL_CONFIRM_IMAGES_DETAIL_ID = "detail_id";
-	public static String COL_CONFIRM_IMAGES_IMAGES = "images";
+	public static String COL_CONFIRM_IMAGES_IMAGES = "image";
 	public static String COL_CONFIRM_IMAGES_CAPTURE_DATE = "captured_date";
 	public static String COL_CONFIRM_IMAGES_UPDATE_DATE = "uploaded_at";
 
@@ -114,7 +113,7 @@ public class Views {
 	public static String COL_STAFFS_EMAIL = "email";
 	public static String COL_STAFFS_PHONE = "phone";
 	public static String COL_STAFFS_JOB_OCCUPIED = "job_occupied";
-	public static String COL_STAFFS_IMAGES = "images";
+	public static String COL_STAFFS_IMAGES = "image";
 	public static String COL_STAFFS_CREATEDATE = "created_at";
 	public static String COL_STAFFS_STATUS = "status";
 

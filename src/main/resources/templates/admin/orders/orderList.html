@@ -8,33 +8,72 @@
 
 	<title>Cleanex - Orders Management</title>
 
-	<link rel="stylesheet" href="../back/vendors/mdi/css/materialdesignicons.min.css" />
-	<link rel="stylesheet" href="../back/vendors/css/vendor.bundle.base.css" />
-	<link rel="stylesheet" href="../back/vendors/flag-icon-css/css/flag-icon.min.css" />
-	<link rel="stylesheet" href="../back/vendors/jvectormap/jquery-jvectormap.css" />
-	<link rel="stylesheet" href="../back/css/demo/style.css" />
+	<link rel="stylesheet" href="../../back/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../back/css/lineicons.css" />
+	<link rel="stylesheet" href="../../back/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="../../back/css/fullcalendar.css" />
+	<link rel="stylesheet" href="../../back/css/main.css" />
 </head>
 
 <body>
-	<script src="../back/js/preloader.js"></script>
-	<div class="body-wrapper">
-		<div class="main-wrapper mdc-drawer-app-content">
-
-			<!-- HEADER -->
-			<div th:replace="~{admin/fragment/header::adminHeader}"></div>
-
-			- Hiển thị danh sách Orders bao gồm thông tin cơ bản
-			- Cột Action: Replace nhân viên nếu cột status của orders equals('pending') || equals('confirmed')
-		</div>
+	<div id="preloader">
+		<div class="spinner"></div>
 	</div>
+	<!-- ASIDE -->
+	<aside class="sidebar-nav-wrapper" th:replace="~{admin/fragment/aside::adminAside}"></aside>
 
-	<script src="../back/vendors/js/vendor.bundle.base.js"></script>
-	<script src="../back/vendors/chartjs/Chart.min.js"></script>
-	<script src="../back/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-	<script src="../back/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="../back/js/material.js"></script>
-	<script src="../back/js/misc.js"></script>
-	<script src="../back/js/dashboard.js"></script>
+	<div class="overlay"></div>
+	<main class="main-wrapper">
+
+		<!-- HEADER -->
+		<header th:replace="~{admin/fragment/header::adminHeader}"></header>
+		<div class="mx-5 mt-5">
+			<div class="col-12">
+				<h2 class="mb-4">Order List</h2>
+				<div class="table-responsive border-1">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Title</th>
+								<th>Content</th>
+								<th>Images</th>
+								<th>Created Date</th>
+								<th>Updated Date</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="item : ${orders}">
+								<td th:text="${item.id}"></td>
+								<td th:text="${item.usrId}"></td>
+								<td th:text="${item.price}"></td>
+								<td th:text="${item.startDate}"></td>
+								<td th:text="${item.createDate}"></td>
+								<td th:text="${item.status}"></td>
+								<td>
+									<a th:if="${item.status} == 'pending' || ${item.status} == 'confirmed'"
+										class="btn btn-warning" th:href="@{/admin/orders/replace(id=${item.id})}">
+										Replace Staff
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="../../back/js/bootstrap.bundle.min.js"></script>
+	<script src="../../back/js/Chart.min.js"></script>
+	<script src="../../back/js/dynamic-pie-chart.js"></script>
+	<script src="../../back/js/moment.min.js"></script>
+	<script src="../../back/js/fullcalendar.js"></script>
+	<script src="../../back/js/jvectormap.min.js"></script>
+	<script src="../../back/js/world-merc.js"></script>
+	<script src="../../back/js/polyfill.js"></script>
+	<script src="../../back/js/main.js"></script>
 </body>
 
 </html>

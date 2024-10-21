@@ -23,18 +23,18 @@
 
 		<!-- Header -->
 		<div th:replace="~{user/fragments/usr_header::header}"></div>
-		
+
 		<div class="login-container">
 			<div class="form-container">
 				<h2>Welcome Back</h2>
 				<div th:if="${loginError}" class="error-message" th:text="${loginError}"></div>
 				<form th:action="@{/user/checklogin}" method="post">
 					<div class="form-group">
-						<label for="username">Username</label>
+						<label for="username">Username <span style="color: red;">(*)</span></label>
 						<input type="text" id="username" name="usrname" required>
 					</div>
 					<div class="form-group">
-						<label for="password">Password</label>
+						<label for="password">Password <span style="color: red;">(*)</span></label>
 						<input type="password" id="password" name="pw" required>
 					</div>
 					<button type="submit" class="btn-primary">Login</button>
@@ -48,7 +48,7 @@
 
 		<!-- Footer -->
 		<div th:replace="~{user/fragments/usr_footer::footer}"></div>
-		
+
 		<script>
 			setTimeout(function () {
 				document.querySelector('.error-message').innerText = '';

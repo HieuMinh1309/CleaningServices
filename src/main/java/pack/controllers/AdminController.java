@@ -42,7 +42,7 @@ public class AdminController {
 	@PostMapping("/checklogin")
 	public String chklogin(@RequestParam("usrname") String username, @RequestParam("pw") String password,
 			HttpServletRequest req, Model model) {
-		Admin find = rep.findAdminbyUsername(username);
+		Admin find = rep.findAdminByUsername(username);
 		if (find == null) {
 			model.addAttribute("loginError", "Account doesn't exists, please check again!");
 			return Views.ADMIN_LOGIN;
@@ -58,7 +58,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/accounts")
-	public String account() {
+	public String account(HttpServletRequest req, Model model) {
+		String find = (String) req.getSession().getAttribute("username");
+		Admin admin = rep.findAdminByUsername(find);
+		model.addAttribute("admin", admin);
 		return Views.ADMIN_ACCOUNTS;
 	}
 

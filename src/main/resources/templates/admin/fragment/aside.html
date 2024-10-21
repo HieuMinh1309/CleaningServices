@@ -1,0 +1,76 @@
+<aside class="sidebar-nav-wrapper" th:fragment="adminAside">
+	<div class="navbar-logo">
+		<a href="index.html">
+			<h2>Cleanex</h2>
+		</a>
+	</div>
+	<nav class="sidebar-nav">
+		<ul>
+			<li class="nav-item">
+				<a th:href="@{/admin}">
+					<span class="icon">
+						<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+							fill="#e8eaed">
+							<path
+								d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z" />
+						</svg>
+					</span>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/admin/orders/orderList}">
+					<span class="icon">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M3.33334 3.35442C3.33334 2.4223 4.07954 1.66666 5.00001 1.66666H15C15.9205 1.66666 16.6667 2.4223 16.6667 3.35442V16.8565C16.6667 17.5519 15.8827 17.9489 15.3333 17.5317L13.8333 16.3924C13.537 16.1673 13.1297 16.1673 12.8333 16.3924L10.5 18.1646C10.2037 18.3896 9.79634 18.3896 9.50001 18.1646L7.16668 16.3924C6.87038 16.1673 6.46298 16.1673 6.16668 16.3924L4.66668 17.5317C4.11731 17.9489 3.33334 17.5519 3.33334 16.8565V3.35442ZM4.79168 5.04218C4.79168 5.39173 5.0715 5.6751 5.41668 5.6751H10C10.3452 5.6751 10.625 5.39173 10.625 5.04218C10.625 4.69264 10.3452 4.40927 10 4.40927H5.41668C5.0715 4.40927 4.79168 4.69264 4.79168 5.04218ZM5.41668 7.7848C5.0715 7.7848 4.79168 8.06817 4.79168 8.41774C4.79168 8.76724 5.0715 9.05066 5.41668 9.05066H10C10.3452 9.05066 10.625 8.76724 10.625 8.41774C10.625 8.06817 10.3452 7.7848 10 7.7848H5.41668ZM4.79168 11.7932C4.79168 12.1428 5.0715 12.4262 5.41668 12.4262H10C10.3452 12.4262 10.625 12.1428 10.625 11.7932C10.625 11.4437 10.3452 11.1603 10 11.1603H5.41668C5.0715 11.1603 4.79168 11.4437 4.79168 11.7932ZM13.3333 4.40927C12.9882 4.40927 12.7083 4.69264 12.7083 5.04218C12.7083 5.39173 12.9882 5.6751 13.3333 5.6751H14.5833C14.9285 5.6751 15.2083 5.39173 15.2083 5.04218C15.2083 4.69264 14.9285 4.40927 14.5833 4.40927H13.3333ZM12.7083 8.41774C12.7083 8.76724 12.9882 9.05066 13.3333 9.05066H14.5833C14.9285 9.05066 15.2083 8.76724 15.2083 8.41774C15.2083 8.06817 14.9285 7.7848 14.5833 7.7848H13.3333C12.9882 7.7848 12.7083 8.06817 12.7083 8.41774ZM13.3333 11.1603C12.9882 11.1603 12.7083 11.4437 12.7083 11.7932C12.7083 12.1428 12.9882 12.4262 13.3333 12.4262H14.5833C14.9285 12.4262 15.2083 12.1428 15.2083 11.7932C15.2083 11.4437 14.9285 11.1603 14.5833 11.1603H13.3333Z" />
+						</svg>
+					</span>
+					<span class="text">List of order</span>
+				</a>
+			</li>
+			<li class="nav-item nav-item-has-children">
+				<a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_2"
+					aria-controls="ddmenu_2" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon">
+						<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+							fill="#e8eaed">
+							<path
+								d="M288-288h288v-72H288v72Zm0-156h384v-72H288v72Zm0-156h384v-72H288v72Zm-72 456q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h528q29.7 0 50.85 21.15Q816-773.7 816-744v528q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm0-72h528v-528H216v528Zm0-528v528-528Z" />
+						</svg>
+					</span>
+					<span class="text">Blogs</span>
+				</a>
+				<ul id="ddmenu_2" class="collapse show dropdown-nav">
+					<li>
+						<a th:href="@{/admin/blogs/blogList}"> List of blog </a>
+					</li>
+					<li>
+						<a th:href="@{/admin/blogs/blogCreate}"> Create new blog </a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item nav-item-has-children">
+				<a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_3"
+					aria-controls="ddmenu_3" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon">
+						<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+							fill="#e8eaed">
+							<path
+								d="M120-40v-280q0-83 58.5-141.5T320-520h40v-320q0-33 23.5-56.5T440-920h80q33 0 56.5 23.5T600-840v320h40q83 0 141.5 58.5T840-320v280H120Zm80-80h80v-120q0-17 11.5-28.5T320-280q17 0 28.5 11.5T360-240v120h80v-120q0-17 11.5-28.5T480-280q17 0 28.5 11.5T520-240v120h80v-120q0-17 11.5-28.5T640-280q17 0 28.5 11.5T680-240v120h80v-200q0-50-35-85t-85-35H320q-50 0-85 35t-35 85v200Zm320-400v-320h-80v320h80Zm0 0h-80 80Z" />
+						</svg>
+					</span>
+					<span class="text">Services</span>
+				</a>
+				<ul id="ddmenu_3" class="collapse show dropdown-nav">
+					<li>
+						<a th:href="@{/admin/services/serviceList}"> List of service </a>
+					</li>
+					<li>
+						<a th:href="@{/admin/services/serviceCreate}"> Create new service </a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</aside>

@@ -5,18 +5,17 @@ import java.sql.Date;
 public class ConfirmImages {
 	private int id;
 	private int detailId;
-	private String images;
+	private String image;
 	private Date capturedDate;
 	private Date uploadDate;
 
 	public ConfirmImages() {
 	}
 
-	public ConfirmImages(int id, int detailId, String images, Date capturedDate, Date uploadDate) {
-		super();
+	public ConfirmImages(int id, int detailId, String image, Date capturedDate, Date uploadDate) {
 		this.id = id;
 		this.detailId = detailId;
-		this.images = images;
+		this.image = image;
 		this.capturedDate = capturedDate;
 		this.uploadDate = uploadDate;
 	}
@@ -37,12 +36,12 @@ public class ConfirmImages {
 		this.detailId = detailId;
 	}
 
-	public String getImages() {
-		return images;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImages(String images) {
-		this.images = images;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public Date getCapturedDate() {

@@ -9,7 +9,7 @@ public class User {
 	private String email;
 	private String phone;
 	private String address;
-	private String images;
+	private String image;
 	private Date createDate;
 	private String confirmPassword;
 	private String fullname;
@@ -17,16 +17,15 @@ public class User {
 	public User() {
 	}
 
-	public User(int id, String username, String password, String email, String phone, String address, String images,
+	public User(int id, String username, String password, String email, String phone, String address, String image,
 			Date createDate, String confirmPassword, String fullname) {
-		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
-		this.images = images;
+		this.image = image;
 		this.createDate = createDate;
 		this.confirmPassword = confirmPassword;
 		this.fullname = fullname;
@@ -80,12 +79,12 @@ public class User {
 		this.address = address;
 	}
 
-	public String getImages() {
-		return images;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImages(String images) {
-		this.images = images;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public Date getCreateDate() {

@@ -23,7 +23,7 @@ public class AdminRepository {
 	@Autowired
 	JdbcTemplate db;
 
-	public Admin findAdminbyUsername(String username) {
+	public Admin findAdminByUsername(String username) {
 		try {
 			String str_query = String.format("select * from %s where %s=?", Views.TBL_ADMIN, Views.COL_ADMIN_USERNAME);
 			return db.queryForObject(str_query, new Admin_mapper(), new Object[] { username });
@@ -44,7 +44,7 @@ public class AdminRepository {
 	/***
 	 * get all data from table services
 	 * 
-	 * @return list service
+	 * @return list of service
 	 */
 
 	public List<Service> getServices() {
@@ -114,7 +114,7 @@ public class AdminRepository {
 	/***
 	 * get all data from table blog
 	 * 
-	 * @return list blog
+	 * @return list of blog
 	 */
 
 	public List<Blog> getBlogs() {
@@ -150,7 +150,7 @@ public class AdminRepository {
 	public String newBlog(Blog blog) {
 		try {
 			String str_query = String.format("insert into %s (title, content, images) values(?,?,?)", Views.TBL_BLOG);
-			int rowaccept = db.update(str_query, new Object[] { blog.getTitle(), blog.getContent(), blog.getImages() });
+			int rowaccept = db.update(str_query, new Object[] { blog.getTitle(), blog.getContent(), blog.getImage() });
 			if (rowaccept == 1) {
 				return "success";
 			}
@@ -171,7 +171,7 @@ public class AdminRepository {
 			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=GETDATE() where id=?", Views.TBL_BLOG,
 					Views.COL_BLOG_TITLE, Views.COL_BLOG_CONTENT, Views.COL_BLOG_IMAGES, Views.COL_BLOG_UPDATE_DATE);
 			int rowaccept = db.update(str_query,
-					new Object[] { blog.getTitle(), blog.getContent(), blog.getImages(), blog.getUpdateDate() });
+					new Object[] { blog.getTitle(), blog.getContent(), blog.getImage(), blog.getUpdateDate() });
 			if (rowaccept == 1) {
 				return "success";
 			}
@@ -203,7 +203,7 @@ public class AdminRepository {
 	/***
 	 * get all data from table staffs
 	 * 
-	 * @return list staff
+	 * @return list of staff
 	 */
 
 	public List<Staff> getStaffs() {
@@ -214,11 +214,11 @@ public class AdminRepository {
 			return null;
 		}
 	}
-	
+
 	/***
 	 * get all data from table orders
 	 * 
-	 * @return list order
+	 * @return list of order
 	 */
 
 	public List<Order> getOrders() {

@@ -7,37 +7,49 @@
 
 	<title>Cleanex - Admin Login</title>
 
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet" />
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="../front/css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../back/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../back/css/lineicons.css" />
+	<link rel="stylesheet" href="../../back/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" href="../../back/css/fullcalendar.css" />
+	<link rel="stylesheet" href="../../back/css/main.css" />
 </head>
 
 <body>
 	<div class="wrapper">
 		<div class="login-container">
 			<div class="form-container">
-				<h2>Admin login</h2>
+				<h2>Admin Login</h2>
 				<div th:if="${loginError}" class="error-message" th:text="${loginError}"></div>
 				<form th:action="@{/admin/checklogin}" method="post">
 					<div class="form-group">
-						<label for="username">Username</label>
+						<label for="username">Username <span style="color: red;">(*)</span></label>
 						<input type="text" id="username" name="usrname" required />
 					</div>
 					<div class="form-group">
-						<label for="password">Password</label>
+						<label for="password">Password <span style="color: red;">(*)</span></label>
 						<input type="password" id="password" name="pw" required />
 					</div>
 					<button type="submit" class="btn btn-primary">Login</button>
 				</form>
 			</div>
 		</div>
-
-		<script>
-			setTimeout(function () {
-				document.querySelector('.error-message').innerText = '';
-			}, 6000);
-		</script>
 	</div>
+
+	<script src="../../back/js/bootstrap.bundle.min.js"></script>
+	<script src="../../back/js/Chart.min.js"></script>
+	<script src="../../back/js/dynamic-pie-chart.js"></script>
+	<script src="../../back/js/moment.min.js"></script>
+	<script src="../../back/js/fullcalendar.js"></script>
+	<script src="../../back/js/jvectormap.min.js"></script>
+	<script src="../../back/js/world-merc.js"></script>
+	<script src="../../back/js/polyfill.js"></script>
+	<script src="../../back/js/main.js"></script>
+
+	<script>
+		setTimeout(function () {
+			document.querySelector('.error-message').innerText = '';
+		}, 6000);
+	</script>
 </body>
 
 </html>

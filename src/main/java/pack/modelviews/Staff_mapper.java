@@ -18,7 +18,7 @@ public class Staff_mapper implements RowMapper<Staff>{
 		item.setEmail(rs.getString(Views.COL_STAFFS_EMAIL));
 		item.setPhone(rs.getString(Views.COL_STAFFS_PHONE));
 		item.setJobOccupied(rs.getInt(Views.COL_STAFFS_JOB_OCCUPIED));
-		item.setImages(rs.getString(Views.COL_STAFFS_IMAGES));
+		item.setImage(rs.getString(Views.COL_STAFFS_IMAGES));
 		item.setCreateDate(rs.getDate(Views.COL_STAFFS_CREATEDATE));
 		item.setStatus(rs.getString(Views.COL_STAFFS_STATUS));
 		return item;
