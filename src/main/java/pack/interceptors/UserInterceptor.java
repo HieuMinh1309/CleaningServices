@@ -10,10 +10,9 @@ public class UserInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		Object userId = request.getSession().getAttribute("usrId");
-		Object validStatus = request.getSession().getAttribute("validStatus").toString();
 		if (userId != null) {
 			return true;
-		}else if (validStatus != null && validStatus.equals("valid"))
+		}
 		response.sendRedirect("/user/login");
 		return false;
 	}

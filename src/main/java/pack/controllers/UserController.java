@@ -116,10 +116,17 @@ public class UserController {
 
 	@PostMapping("/updatePro")
 	public String updatePro(@RequestParam(required = false) MultipartFile image, @ModelAttribute User user, Model model,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, HttpServletRequest request) {
 		try {
+			User oldUserInfo = rep.findUserbyId((int) request.getSession().getAttribute("usrId"));
+			
 			if (user.getPassword() != null && !user.getPassword().equals(user.getConfirmPassword())) {
 				model.addAttribute("error", "Password and Confirm Password are not match.");
+				return Views.USER_EDIT_PROFILE;
+			}
+			
+			if(user.getPassword() != null && SecurityUtility.compareBcrypt(oldUserInfo.getPassword(), user.getPassword())) {
+				model.addAttribute("error", "You have used this password before. Please choose a different one.");
 				return Views.USER_EDIT_PROFILE;
 			}
 
@@ -186,29 +193,7 @@ public class UserController {
 			return Views.USER_VALIDATE;
 		}
 
-		request.getSession().setAttribute("validStatus", "valid");
-		request.getSession().setAttribute("username", user.getUsername());
-		return "redirect:/user/changepassword";
+		request.getSession().setAttribute("usrId", user.getId());
+		return "redirect:/user/accounts";
 	}
-
-	@GetMapping("/changepassword")
-	public String changepasspage() {
-		return Views.USER_CHANGE_PASSWORD;
-	}
-
-	@PostMapping("/newPassword")
-	public String editpass(@RequestParam String password, @RequestParam String ConfirmPass,
-			@RequestParam String phoneNumber, Model model) {
-		if (!password.equals(ConfirmPass)) {
-			model.addAttribute("error", "ConfirmPass and Password are not match.");
-			return Views.USER_CHANGE_PASSWORD;
-		}
-		String result = rep.changePass(phoneNumber, password);
-		if (result.equals("success")) {
-			return "redirect:/user/login";
-		}
-		model.addAttribute("error", "Change pass failed due to some errors.");
-		return Views.USER_CHANGE_PASSWORD;
-	}
-
 }

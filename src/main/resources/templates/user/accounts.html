@@ -69,9 +69,9 @@
 		<div class="acc-container mt-5">
 			<div class="row">
 				<div class="col-3 text-center">
-					<img th:if="${user.images == null}" src="../front/img/none-user.png"
+					<img th:if="${user.image == null}" src="../front/img/none-user.png"
 						class="img-fluid rounded-circle mb-3" width="150" height="150" />
-					<img th:if="${user.images != null}" th:src="'/upload/' + ${user.images}"
+					<img th:if="${user.image != null}" th:src="'/upload/' + ${user.image}"
 						class="img-fluid rounded-circle mb-3" width="150" height="150" />
 					<h4 th:text="${user.fullname}"></h4>
 					<a class="btn btn-primary mt-3" aria-label="Edit Information" th:href="@{/user/editProfile}">Edit
@@ -107,31 +107,19 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="item : ${orders}">
-									<td th:text="${item.id}"></td>
-									<td th:text="${item.userId}"></td>
-									<td th:text="${item.price}"></td>
-									<td th:text="${item.startDate}"></td>
-									<td th:text="${item.status}"></td>
-									<td>
-										<a class="btn btn-outline-info" th:href="@{user/booking_history}">
-											See details
-										</a>
-									</td>
-									<!--<tr th:each="item: ${orders}" th:if="${item != null}">
+								<tr th:each="item: ${orders}" th:if="${item != null}">
 									<td th:text="${item.id}"></td>
 									<td th:text="${item.price}"></td>
 									<td th:text="${item.startDate}"></td>
 									<td th:text="${item.createDate}"></td>
 									<td th:text="${item.status}"></td>
-									<td th:href="${user/details}">See details</td>
+									<a href="#" class="btn btn-info" style="margin-left:38vw">Browse More</a>
 								</tr>
 								<tr th:if="${item == null}">
 									<td colspan="6" style="text-align: center; font-weight: 700;">None</td>
-								</tr>-->
+								</tr>
 							</tbody>
 						</table>
-						<a href="#" class="btn btn-info" style="margin-left:38vw">Browse More</a>
 					</div>
 				</div>
 			</div>
