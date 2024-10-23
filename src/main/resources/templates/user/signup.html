@@ -3,11 +3,12 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Cleanex - Sign Up</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="Cleanex - Home Cleaning Service" name="keywords" />
 	<meta content="Cleanex - Home Cleaning Service" name="description" />
 
+	<title>Cleanex - Sign Up</title>
+	
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet" />
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
@@ -22,7 +23,7 @@
 	<div class="wrapper">
 
 		<!-- Header -->
-		<div th:replace="~{user/fragments/usr_header::header}"></div>
+		<div th:replace="~{user/fragments/header::userHeader}"></div>
 
 		<div class="signup-container">
 			<div class="form-container">
@@ -30,7 +31,7 @@
 				<form th:action="@{/user/newUser}" method="post" th:object="${new_item}">
 					<div th:if="${error}" class="error-message" th:text="${error}"></div>
 					<div class="form-group">
-						<label for="fullname">FullName <span style="color: red;">(*)</span></label>
+						<label for="fullname">Full Name <span style="color: red;">(*)</span></label>
 						<input type="text" th:field="*{fullname}" required>
 					</div>
 					<div class="form-group">
@@ -58,19 +59,20 @@
 						<p>Already have an account? <a class="acc-link" th:href="@{/user/login}">Login</a></p>
 					</div>
 				</form>
-				<script>
-					setTimeout(function () {
-						document.querySelector('.error-message').innerText = '';
-					}, 6000);
-				</script>
 			</div>
 		</div>
 
 		<!-- Footer -->
-		<div th:replace="~{user/fragments/usr_footer::footer}"></div>
+		<div th:replace="~{user/fragments/footer::userFooter}"></div>
 
 	</div>
-
+	
+	<script>
+		setTimeout(function () {
+			document.querySelector('.error-message').innerText = '';
+		}, 6000);
+	</script>
+	
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 

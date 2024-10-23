@@ -13,7 +13,7 @@ public class StaffRepository {
 	@Autowired
 	JdbcTemplate db;
 
-	public Staff findStaffByUserName(String username) {
+	public Staff getStaffByUsername(String username) {
 		try {
 			String str_query = String.format("select * from %s where %s = ?", Views.TBL_STAFFS,
 					Views.COL_STAFFS_USERNAME);

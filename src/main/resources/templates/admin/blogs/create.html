@@ -3,10 +3,10 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" description="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" description="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-	<title>Cleanex - Service Management</title>
+	<title>Cleanex - Blog Management</title>
 
 	<link rel="stylesheet" href="../../back/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../../back/css/lineicons.css" />
@@ -32,38 +32,28 @@
 		<header th:replace="~{admin/fragment/header::adminHeader}"></header>
 
 		<div class="mx-5 mt-5">
-			<h2>Create Service</h2>
+			<div class="d-flex">
+				<h2 class="flex-grow-1">Write a blog</h2>
+				<a class="btn btn-primary" th:href="@{/admin/blogs/list}">Return to blog list</a>
+			</div>
 			<div th:if="${catchError}" class="error-message" th:text="${catchError}"></div>
-			<form th:action="@{/admin/services/create}" method="post" th:object="${new_item}"
+			<form th:action="@{/admin/blogs/createBlog}" method="post" th:object="${new_item}"
 				enctype="multipart/form-data" class="mt-3">
-				<div class="mb-3">
-					<label class="form-label" for="serName">Service Name <span style="color: red;">(*)</span></label>
-					<input class="form-control" type="text" id="serName" name="serName" required />
-				</div>
-				<div class="mb-3">
-					<label class="form-label" for="description">Description</label>
-					<textarea class="form-control" rows="3" cols="50" id="description" name="description"></textarea>
-				</div>
-				<div class="mb-3 row">
-					<div class="col-6">
-						<label class="form-label" for="basePrice">Base Price <span
-								style="color: red;">(*)</span></label>
-						<input class="form-control" type="number" id="basePrice" name="basePrice" required />
-					</div>
-					<div class="col-6">
-						<label class="form-label" for="duration">Duration <span style="color: red;">(*)</span></label>
-						<input class="form-control" type="number" id="duration" name="duration" required />
-					</div>
-				</div>
-				<div class="mb-3">
-					<label class="form-label" for="image">Image</label>
-					<input class="form-control" type="file" id="image" name="image" accept="image/*" />
-				</div>
-				<button type="submit" class="btn btn-success">Create</button>
+				<div id="editor"></div>
+				<button type="submit" class="btn btn-success mt-3">Submit</button>
 			</form>
 		</div>
 	</main>
-
+	
+	<script type="importmap">
+	{
+		"imports": {
+			"ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.js",
+			"ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.2.0/"
+		}
+	}
+	</script>
+	
 	<script src="../../back/js/bootstrap.bundle.min.js"></script>
 	<script src="../../back/js/Chart.min.js"></script>
 	<script src="../../back/js/dynamic-pie-chart.js"></script>
@@ -73,6 +63,8 @@
 	<script src="../../back/js/world-merc.js"></script>
 	<script src="../../back/js/polyfill.js"></script>
 	<script src="../../back/js/main.js"></script>
+	<script src="../../back/js/blog-form.js" type="module"></script>
+
 </body>
 
 </html>

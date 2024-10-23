@@ -14,6 +14,12 @@
 	<link rel="stylesheet" href="../../back/css/fullcalendar.css" />
 	<link rel="stylesheet" href="../../back/css/main.css" />
 
+	<style>
+		.table thead tr th,
+		.table tbody tr td {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
@@ -30,26 +36,38 @@
 		<!-- HEADER -->
 		<header th:replace="~{admin/fragment/header::adminHeader}"></header>
 
-		<div class="account-container">
-			<div class="account-content">
-				<h2>Edit Blog</h2>
-				<div th:if="${catchError}" class="error-message" th:text="${catchError}"></div>
-				<form th:action="@{/admin/blogs/blogEdit}" method="post" th:object="${edit_item}"
-					enctype="multipart/form-data">
-					<div class="form-group">
-						<lable for="title">Title</lable>
-						<input type="text" id="title" name="title" required />
-					</div>
-					<div class="form-group">
-						<lable for="content">Content</lable>
-						<textarea rows="10" cols="5" id="content" name="content" required></textarea>
-					</div>
-					<div class="form-group">
-						<label for="image">Image</label>
-						<input type="file" id="image" name="image" accept="image/*" />
-					</div>
-					<button type="submit" class="btn btn-success">Save</button>
-				</form>
+		<div class="mx-5 mt-5">
+			<div class="d-flex">
+				<h2 class="flex-grow-1">Blog List</h2>
+				<a class="btn btn-primary" th:href="@{/admin/blogs/create}">Write a blog</a>
+			</div>
+			<div class="table-responsive mt-4">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Title</th>
+							<th>Created Date</th>
+							<th>Updated Date</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${blogs}">
+							<td th:text="${item.id}"></td>
+							<td th:text="${item.title}"></td>
+							<td th:text="${item.createDate}"></td>
+							<td th:text="${item.updateDate}"></td>
+							<td>
+								<a class="btn-btn-outline-info" th:href="@{/admin/blogs/detail(id=${item.id})}">
+									Detail
+								</a>
+								<a class="btn btn-warning" th:href="@{/admin/blogs/edit(id=${item.id})}">Edit</a>
+								<a class="btn btn-danger" th:href="@{/admin/blogs/delete(id=${item.id})}">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</main>
@@ -63,6 +81,7 @@
 	<script src="../../back/js/world-merc.js"></script>
 	<script src="../../back/js/polyfill.js"></script>
 	<script src="../../back/js/main.js"></script>
+
 </body>
 
 </html>

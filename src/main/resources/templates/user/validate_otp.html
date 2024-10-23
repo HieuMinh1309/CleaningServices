@@ -3,11 +3,10 @@
 
 <head>
 	<meta charset="utf-8" />
+	<title>Cleanex - Phone Number Confirmation</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="Cleanex - Home Cleaning Service" name="keywords" />
 	<meta content="Cleanex - Home Cleaning Service" name="description" />
-
-	<title>Cleanex - Login</title>
 
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet" />
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
@@ -24,37 +23,26 @@
 	<div th:replace="~{user/fragments/header::userHeader}"></div>
 
 	<div class="wrapper">
-		<div class="login-container">
-			<div class="form-container">
-				<h2>Welcome Back</h2>
-				<div th:if="${loginError}" class="error-message" th:text="${loginError}"></div>
-				<form th:action="@{/user/checkLogin}" method="post">
-					<div class="form-group">
-						<label for="username">Username <span style="color: red;">(*)</span></label>
-						<input type="text" id="username" name="usrname" required>
-					</div>
-					<div class="form-group">
-						<label for="password">Password <span style="color: red;">(*)</span></label>
-						<input type="password" id="password" name="pw" required>
-					</div>
-					<button type="submit" class="btn-primary">Login</button>
-					<div class="form-footer row">
-						<a class="acc-link forgot-password col-6" th:href="@{/user/forgotPassword}">Forgot Password?</a>
-						<a class="acc-link col-6" th:href="@{/user/signup}">Don't have an account?</a>
-					</div>
-				</form>
-			</div>
+		<div class="container">
+			<h2 class="mb-4">Confirm your phone number</h2>
+			<form th:action="@{/user/verification}" method="post" class="needs-validation" novalidate>
+				<div th:if="${error}" class="error-message" th:text="${error}"></div>
+				<div class="mb-3">
+					<input class="form-control" placeholder="Enter your OTP:" type="text" id="otp" name="otp"
+						maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);" required />
+					<div class="valid-feedback">Valid.</div>
+					<div class="invalid-feedback">Please enter your OTP.</div>
+				</div>
+				<div class="row">
+					<button class="btn btn-primary col-6" type="submit">Submit</button>
+					<a class="btn btn-warning col-6" th:href="@{/user/resendOtp}" id="resend">Resend OTP</a>
+				</div>
+			</form>
 		</div>
 	</div>
 
 	<!-- Footer -->
 	<div th:replace="~{user/fragments/footer::userFooter}"></div>
-
-	<script>
-		setTimeout(function () {
-			document.querySelector('.error-message').innerText = '';
-		}, 6000);
-	</script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -64,6 +52,7 @@
 	<script src="../front/lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="../front/lib/lightbox/js/lightbox.min.js"></script>
 	<script src="../front/js/main.js"></script>
+
 </body>
 
 </html>

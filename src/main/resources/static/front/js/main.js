@@ -32,7 +32,6 @@
 		$(window).resize(toggleNavbarMethod);
 	});
 
-
 	// Testimonials carousel
 	$(".testimonials-carousel").owlCarousel({
 		autoplay: true,
@@ -54,7 +53,6 @@
 		}
 	});
 
-
 	// Portfolio isotope and filter
 	var portfolioIsotope = $('.portfolio-container').isotope({
 		itemSelector: '.portfolio-item',
@@ -67,6 +65,24 @@
 
 		portfolioIsotope.isotope({ filter: $(this).data('filter') });
 	});
-
 })(jQuery);
 
+setTimeout(function() {
+	document.querySelector('.error-message').innerText = '';
+}, 6000);
+
+(function() {
+	'use strict';
+	window.addEventListener('load', function() {
+		var forms = document.getElementsByClassName('needs-validation');
+		var validation = Array.prototype.filter.call(forms, function(form) {
+			form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			}, false);
+		});
+	}, false);
+})();

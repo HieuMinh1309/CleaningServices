@@ -6491,8 +6491,8 @@ to {
 	-o-transform: rotate(360deg);
 	transform: rotate(360deg);
 }
-}
 
+}
 .login-container {
 	max-width: 500px;
 	margin: 100px auto;
@@ -6555,4 +6555,8 @@ to {
 
 .login-container .link a:hover {
 	color: #FFD662;
+}
+
+.error-message {
+	color: red;
 }

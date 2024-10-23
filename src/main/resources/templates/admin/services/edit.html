@@ -28,27 +28,30 @@
 				<div class="account-content">
 					<h2>Edit Blog</h2>
 					<div th:if="${catchError}" class="error-message" th:text="${catchError}"></div>
-					<form th:action="@{/admin/services/edit}" method="post" th:object="${edit_item}"
+					<form th:action="@{/admin/services/editService}" method="post" th:object="${edit_item}"
 						enctype="multipart/form-data">
 						<div class="form-group">
 							<lable for="serName">Service Name</lable>
-							<input type="text" id="serName" name="serName" required />
+							<input type="text" id="serName" name="serName" th:value="${service.serName}" required />
 						</div>
 						<div class="form-group">
 							<lable for="description">Description</lable>
-							<textarea rows="3" cols="50" id="description" name="description"></textarea>
+							<textarea rows="3" cols="50" id="description" name="description"
+								th:value="${service.description}"></textarea>
 						</div>
 						<div class="form-group">
 							<lable for="basePrice">Base Price</lable>
-							<input type="number" id="basePrice" name="basePrice" required />
+							<input type="number" id="basePrice" name="basePrice" th:value="${service.basePrice}"
+								required />
 						</div>
 						<div class="form-group">
 							<lable for="duration">Duration</lable>
-							<input type="number" id="duration" name="duration" required />
+							<input type="number" id="duration" name="duration" th:value="${service.duration}"
+								required />
 						</div>
 						<div class="form-group">
 							<label for="image">Image</label>
-							<input type="text" id="image" name="image" accept="image/*" />
+							<input type="text" id="image" name="image" accept="image/*" th:value="${service.image}" />
 						</div>
 						<button type="submit" class="btn btn-success">Save</button>
 					</form>

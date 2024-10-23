@@ -17,7 +17,7 @@ public class HomeController {
 	
 	@GetMapping("/service")
 	public String service() {
-		return Views.MAIN_SERVICE;
+		return Views.MAIN_SERVICES;
 	}
 	
 	@GetMapping("/blog")

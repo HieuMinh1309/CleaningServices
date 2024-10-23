@@ -23,7 +23,13 @@ public class AdminRepository {
 	@Autowired
 	JdbcTemplate db;
 
-	public Admin findAdminByUsername(String username) {
+	/***
+	 * get specific admin from table staffs by username
+	 * 
+	 * @return specific admin
+	 */
+
+	public Admin getAdminByUsername(String username) {
 		try {
 			String str_query = String.format("select * from %s where %s=?", Views.TBL_ADMIN, Views.COL_ADMIN_USERNAME);
 			return db.queryForObject(str_query, new Admin_mapper(), new Object[] { username });
@@ -32,7 +38,13 @@ public class AdminRepository {
 		}
 	}
 
-	public Admin findAdminById(int id) {
+	/***
+	 * get specific admin from table staffs by ID
+	 * 
+	 * @return specific admin
+	 */
+
+	public Admin getAdminById(int id) {
 		try {
 			String str_query = String.format("select * from %s where %s=?", Views.TBL_ADMIN, Views.COL_ADMIN_ID);
 			return db.queryForObject(str_query, new Admin_mapper(), new Object[] { id });
@@ -42,14 +54,14 @@ public class AdminRepository {
 	}
 
 	/***
-	 * get all data from table services
+	 * get all data from table sers
 	 * 
-	 * @return list of service
+	 * @return list of ser
 	 */
 
 	public List<Service> getServices() {
 		try {
-			String str_query = String.format("select * from %s", Views.TBL_SERVICE);
+			String str_query = String.format("select * from %s", Views.TBL_SERVICES);
 			return db.query(str_query, new Service_mapper());
 		} catch (Exception e) {
 			return null;
@@ -57,24 +69,25 @@ public class AdminRepository {
 	}
 
 	/***
-	 * get data from table service by id
+	 * get data from table ser by id
 	 * 
-	 * @return a service
+	 * @return a ser
 	 */
 
-	public Service findServiceById(int id) {
+	public Service getServiceById(int id) {
 		try {
-			String str_query = String.format("select * from %s where %s=?", Views.TBL_SERVICE, Views.COL_SERVICE_ID);
+			String str_query = String.format("select * from %s where %s=?", Views.TBL_SERVICES, Views.COL_SERVICES_ID);
 			return db.queryForObject(str_query, new Service_mapper(), new Object[] { id });
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	public String newService(Service service) {
+	public String newService(Service ser) {
 		try {
-			String str_query = String.format("insert into %s values(?,?,?,?,?)", Views.TBL_SERVICE);
-			int rowaccept = db.update(str_query, new Service_mapper());
+			String str_query = String.format("insert into %s values (?,?,?,?,?)", Views.TBL_SERVICES);
+			int rowaccept = db.update(str_query, new Object[] { ser.getSerName(), ser.getDescription(),
+					ser.getBasePrice(), ser.getDuration(), ser.getImage() });
 			if (rowaccept == 1) {
 				return "success";
 			}
@@ -84,11 +97,12 @@ public class AdminRepository {
 		}
 	}
 
-	public String editService(Service service) {
+	public String editService(Service ser) {
 		try {
-			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=?, %s=? where %s=?", Views.TBL_SERVICE,
-					Views.COL_SERVICE_NAME, Views.COL_SERVICE_DESCRIPTION, Views.COL_SERVICE_BASE_PRICE,
-					Views.COL_SERVICE_DURATION, Views.COL_SERVICE_ID, Views.COL_SERVICE_IMAGES);
+			String str_query = String.format("update %s set %s=?, %s=?, %s=?, %s=?, %s=? where %s=?",
+					Views.TBL_SERVICES, Views.COL_SERVICES_NAME, Views.COL_SERVICES_DESCRIPTION,
+					Views.COL_SERVICES_BASE_PRICE, Views.COL_SERVICES_DURATION, Views.COL_SERVICES_ID,
+					Views.COL_SERVICES_IMAGES);
 			int rowaccept = db.update(str_query, new Service_mapper());
 			if (rowaccept == 1) {
 				return "success";
@@ -101,7 +115,8 @@ public class AdminRepository {
 
 	public String deleteService(int id) {
 		try {
-			int rowaccept = db.update("delete from services where id=?", new Object[] { id });
+			String str_query = String.format("delete from %s where %s=?", Views.TBL_SERVICES, Views.COL_SERVICES_ID);
+			int rowaccept = db.update(str_query, new Object[] { id });
 			if (rowaccept == 1) {
 				return "success";
 			}
@@ -132,7 +147,7 @@ public class AdminRepository {
 	 * @return a blog
 	 */
 
-	public Blog findBlogById(int id) {
+	public Blog getBlogById(int id) {
 		try {
 			String str_query = String.format("select * from %s where %s=?", Views.TBL_BLOG, Views.COL_BLOG_ID);
 			return db.queryForObject(str_query, new Blog_mapper(), new Object[] { id });
@@ -201,7 +216,7 @@ public class AdminRepository {
 	}
 
 	/***
-	 * get all data from table staffs
+	 * get data from table staffs
 	 * 
 	 * @return list of staff
 	 */
@@ -216,6 +231,21 @@ public class AdminRepository {
 	}
 
 	/***
+	 * get specific staff from table staffs by ID
+	 * 
+	 * @return specific staff
+	 */
+
+	public Staff getStaffById(int id) {
+		try {
+			String str_query = String.format("select * from %s where %s=?", Views.TBL_STAFFS, Views.COL_STAFFS_ID);
+			return db.queryForObject(str_query, new Staff_mapper(), new Object[] { id });
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/***
 	 * get all data from table orders
 	 * 
 	 * @return list of order
@@ -223,7 +253,7 @@ public class AdminRepository {
 
 	public List<Order> getOrders() {
 		try {
-			String str_query = String.format("select * from %s", Views.TBL_SERVICE);
+			String str_query = String.format("select * from %s", Views.TBL_SERVICES);
 			return db.query(str_query, new Order_mapper());
 		} catch (Exception e) {
 			return null;

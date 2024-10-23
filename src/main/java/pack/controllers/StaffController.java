@@ -19,8 +19,8 @@ import pack.utils.Views;
 public class StaffController {
 	@Autowired
 	StaffRepository rep;
-	
-	//-------------------- INDEX & ACCOUNT --------------------//
+
+	// -------------------- INDEX & ACCOUNT --------------------//
 
 	@GetMapping("")
 	public String index() {
@@ -35,7 +35,7 @@ public class StaffController {
 	@PostMapping("/checklogin")
 	public String chklogin(@RequestParam("usrname") String username, @RequestParam("pw") String password,
 			HttpServletRequest request, Model model) {
-		Staff staff = rep.findStaffByUserName(username);
+		Staff staff = rep.getStaffByUsername(username);
 		if (staff == null) {
 			model.addAttribute("loginError", "Account doesn't exists, please check again!");
 			return Views.STAFF_LOGIN;

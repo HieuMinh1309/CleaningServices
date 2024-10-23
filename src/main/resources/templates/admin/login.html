@@ -18,9 +18,9 @@
 	<div class="wrapper">
 		<div class="login-container">
 			<div class="form-container">
-				<h2>Admin Login</h2>
+				<h2 class="mb-4">Admin Login</h2>
 				<div th:if="${loginError}" class="error-message" th:text="${loginError}"></div>
-				<form th:action="@{/admin/checklogin}" method="post">
+				<form th:action="@{/admin/checkLogin}" method="post" class="mt-3">
 					<div class="form-group">
 						<label for="username">Username <span style="color: red;">(*)</span></label>
 						<input type="text" id="username" name="usrname" required />
@@ -45,11 +45,6 @@
 	<script src="../../back/js/polyfill.js"></script>
 	<script src="../../back/js/main.js"></script>
 
-	<script>
-		setTimeout(function () {
-			document.querySelector('.error-message').innerText = '';
-		}, 6000);
-	</script>
 </body>
 
 </html>

@@ -9,7 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import pack.models.Order;
+import pack.models.OrderDetail;
 import pack.models.User;
+import pack.modelviews.Detail_mapper;
 import pack.modelviews.Order_mapper;
 import pack.modelviews.User_mapper;
 import pack.utils.SecurityUtility;
@@ -20,7 +22,7 @@ public class UserRepository {
 	@Autowired
 	JdbcTemplate db;
 
-	public User findUserbyUsername(String username) {
+	public User findUserByUsername(String username) {
 		try {
 			String str_query = String.format("select * from %s where %s = ?", Views.TBL_USER, Views.COL_USER_USERNAME);
 			return db.queryForObject(str_query, new User_mapper(), new Object[] { username });
@@ -29,7 +31,7 @@ public class UserRepository {
 		}
 	}
 
-	public User findUserbyId(int id) {
+	public User findUserById(int id) {
 		try {
 			String str_query = String.format("select * from %s where %s = ?", Views.TBL_USER, Views.COL_USER_ID);
 			return db.queryForObject(str_query, new User_mapper(), new Object[] { id });
@@ -41,7 +43,7 @@ public class UserRepository {
 	public String newUser(User user) {
 		try {
 			String str_query = String.format(
-					"insert into %s (username, password, email, phone, fullname) values(?,?,?,?,?)", Views.TBL_USER);
+					"insert into %s (username, password, email, phone, fullname) values (?,?,?,?,?)", Views.TBL_USER);
 			String hashPassword = SecurityUtility.encryptBcrypt(user.getPassword());
 			int rowaccept = db.update(str_query, new Object[] { user.getUsername(), hashPassword, user.getEmail(),
 					user.getPhone(), user.getFullname() });
@@ -58,7 +60,7 @@ public class UserRepository {
 
 	public User checkPhoneNumberExists(String phoneNumber) {
 		try {
-			String str_query = String.format("select * from %s Where %s = ?", Views.TBL_USER, Views.COL_USER_PHONE);
+			String str_query = String.format("select * from %s where %s = ?", Views.TBL_USER, Views.COL_USER_PHONE);
 			return db.queryForObject(str_query, new User_mapper(), new Object[] { phoneNumber });
 		} catch (Exception e) {
 			return null;
@@ -72,7 +74,7 @@ public class UserRepository {
 			String hashpassword = SecurityUtility.encryptBcrypt(password);
 			int rowaccept = db.update(str_query, new Object[] { hashpassword, phoneNumber });
 			if (rowaccept == 1) {
-				return "success";
+				return "succeed";
 			}
 			return "failed";
 		} catch (Exception e) {
@@ -82,7 +84,7 @@ public class UserRepository {
 
 	public String editProfile(User user) {
 		try {
-			StringBuilder queryBuilder = new StringBuilder("UPDATE " + Views.TBL_USER + " SET ");
+			StringBuilder queryBuilder = new StringBuilder("update " + Views.TBL_USER + " set ");
 			List<Object> params = new ArrayList<>();
 
 			if (user.getFullname() != null && !user.getFullname().isEmpty()) {
@@ -112,15 +114,15 @@ public class UserRepository {
 			}
 
 			if (params.isEmpty()) {
-				return "No fields to update";
+				return "No field needs to update.";
 			}
 
 			queryBuilder.setLength(queryBuilder.length() - 2);
-			queryBuilder.append(" WHERE " + Views.COL_USER_ID + " = ?");
+			queryBuilder.append(" where " + Views.COL_USER_ID + " = ?");
 			params.add(user.getId());
 
 			int rowsAffected = db.update(queryBuilder.toString(), params.toArray());
-			return rowsAffected == 1 ? "success" : "failed";
+			return rowsAffected == 1 ? "succeed" : "failed";
 		} catch (DuplicateKeyException e) {
 			throw new IllegalArgumentException("Some information(username, email, phone) may already exists.");
 		} catch (Exception e) {
@@ -128,12 +130,20 @@ public class UserRepository {
 		}
 	}
 
-	// Orders
-	public List<Order> OrderList(int id) {
+	public List<Order> getOrderList(int id) {
 		try {
-			String str_query = String.format("select * from %s where %s=?", Views.TBL_ORDER,
-					Views.COL_ORDERS_USER_ID);
+			String str_query = String.format("select * from %s where %s=?", Views.TBL_ORDER, Views.COL_ORDERS_USER_ID);
 			return db.query(str_query, new Order_mapper(), new Object[] { id });
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public List<OrderDetail> getDetailList(int id) {
+		try {
+			String str_query = String.format("select * from %s where %s=?", Views.TBL_ORDER_DETAIL,
+					Views.COL_ORDERS_ID);
+			return db.query(str_query, new Detail_mapper(), new Object[] { id });
 		} catch (Exception e) {
 			return null;
 		}

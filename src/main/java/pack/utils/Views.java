@@ -1,47 +1,60 @@
 package pack.utils;
 
 public class Views {
+	// -------------------- ADMIN -------------------- //
 
 	// ADMIN - VIEWS
 	public static String ADMIN_LOGIN = "admin/login";
 	public static String ADMIN_INDEX = "admin/index";
 	public static String ADMIN_ACCOUNTS = "admin/accounts";
+
 	// ADMIN/SERVICES
-	public static String ADMIN_SERVICES_LIST = "admin/services/serviceList";
-	public static String ADMIN_SERVICES_CREATE = "admin/services/serviceCreate";
-	public static String ADMIN_SERVICES_EDIT = "admin/services/serviceEdit";
-	// ADMIN/ORDERS
-	public static String ADMIN_ORDERS_LIST = "admin/orders/orderList";
+	public static String ADMIN_SERVICES_LIST = "admin/services/list";
+	public static String ADMIN_SERVICES_CREATE = "admin/services/create";
+	public static String ADMIN_SERVICES_EDIT = "admin/services/edit";
+
 	// ADMIN/STAFFS
-	public static String ADMIN_STAFFS_LIST = "admin/staffs/staffList";
-	public static String ADMIN_STAFFS_INFO = "admin/staffs/staffInfo";
-	public static String ADMIN_STAFFS_EDIT = "admin/staffs/staffEdit";
+	public static String ADMIN_STAFFS_LIST = "admin/staffs/list";
+	public static String ADMIN_STAFFS_INFO = "admin/staffs/accounts";
+	public static String ADMIN_STAFFS_CREATE_ACCOUNT = "admin/staffs/create_account";
+
 	// ADMIN/BLOGS
-	public static String ADMIN_BLOGS_LIST = "admin/blogs/blogList";
-	public static String ADMIN_BLOGS_CREATE = "admin/blogs/blogCreate";
-	public static String ADMIN_BLOGS_EDIT = "admin/blogs/blogEdit";
+	public static String ADMIN_BLOGS_LIST = "admin/blogs/list";
+	public static String ADMIN_BLOGS_CREATE = "admin/blogs/create";
+	public static String ADMIN_BLOGS_EDIT = "admin/blogs/edit";
+
+	// ADMIN/ORDERS
+	public static String ADMIN_ORDERS_LIST = "admin/orders/list";
+
+	// -------------------- STAFF -------------------- //
 
 	// STAFF - VIEWS
 	public static String STAFF_LOGIN = "staff/login";
 	public static String STAFF_INDEX = "staff/index";
 	public static String STAFF_ACCOUNTS = "staff/accounts";
 
+	// -------------------- USER -------------------- //
+
 	// USER - VIEWS
 	public static String USER_SIGNUP = "user/signup";
 	public static String USER_LOGIN = "user/login";
 	public static String USER_ACCOUNTS = "user/accounts";
-	public static String USER_BOOKING_HISTORY = "user/booking_history";
 	public static String USER_EDIT_PROFILE = "user/edit_profile";
-	public static String USER_FORGOT_PASSWORD = "user/forgotpass_page";
-	public static String USER_VALIDATE = "user/validateOtp";
-	public static String USER_CHANGE_PASSWORD = "user/changePassword";
+	public static String USER_FORGOT_PASSWORD = "user/forgot_password";
+	public static String USER_VALIDATE = "user/validate_otp";
+	public static String USER_CHANGE_PASSWORD = "user/change_password";
+	public static String USER_BOOKING_HISTORY = "user/booking_history";
+
+	// -------------------- HOMEPAGE -------------------- //
 
 	// MAIN PAGE - VIEWS
 	public static String MAIN_INDEX = "main/index";
-	public static String MAIN_SERVICE = "main/service";
+	public static String MAIN_SERVICES = "main/service";
 	public static String MAIN_ABOUT = "main/about";
 	public static String MAIN_BLOG = "main/article";
 	public static String MAIN_CONTACT = "main/contact";
+
+	// -------------------- DATABASE -------------------- //
 
 	// ADMIN
 	public static String TBL_ADMIN = "admin";
@@ -73,13 +86,13 @@ public class Views {
 	public static String COL_BLOG_UPDATE_DATE = "updated_at";
 
 	// SERVICES
-	public static String TBL_SERVICE = "services";
-	public static String COL_SERVICE_ID = "id";
-	public static String COL_SERVICE_NAME = "service_name";
-	public static String COL_SERVICE_DESCRIPTION = "description";
-	public static String COL_SERVICE_BASE_PRICE = "base_price";
-	public static String COL_SERVICE_DURATION = "duration";
-	public static String COL_SERVICE_IMAGES = "image";
+	public static String TBL_SERVICES = "services";
+	public static String COL_SERVICES_ID = "id";
+	public static String COL_SERVICES_NAME = "service_name";
+	public static String COL_SERVICES_DESCRIPTION = "description";
+	public static String COL_SERVICES_BASE_PRICE = "base_price";
+	public static String COL_SERVICES_DURATION = "duration";
+	public static String COL_SERVICES_IMAGES = "image";
 
 	// ORDERS
 	public static String TBL_ORDER = "orders";
@@ -94,6 +107,7 @@ public class Views {
 	public static String COL_ORDER_DETAIL_ID = "id";
 	public static String COL_ORDER_DETAIL_ORDER_ID = "order_id";
 	public static String COL_ORDER_DETAIL_SERVICE_ID = "service_id";
+	public static String COL_ORDER_DETAIL_CODE = "detail_code";
 	public static String COL_ORDER_DETAIL_PRICE = "price";
 	public static String COL_ORDER_DETAIL_START_DATE = "start_date";
 	public static String COL_ORDER_DETAIL_COMPLETED_DATE = "completed_date";
