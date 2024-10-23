@@ -31,7 +31,7 @@ public class UserController {
 	UserRepository rep;
 
 	@Autowired
-	OtpService service;
+	OtpService otpService;
 
 	// -------------------- INDEX -------------------- //
 
@@ -116,12 +116,20 @@ public class UserController {
 		return Views.USER_EDIT_PROFILE;
 	}
 
-	@PostMapping("/updateProfile")
+	@PostMapping("/updateProflie")
 	public String update_profile(@RequestParam(required = false) MultipartFile image, @ModelAttribute User user,
-			Model model, RedirectAttributes ra) {
+			Model model, RedirectAttributes ra, HttpServletRequest request) {
 		try {
+			User oldUserInfo = rep.findUserById((int) request.getSession().getAttribute("usrId"));
+
 			if (user.getPassword() != null && !user.getPassword().equals(user.getConfirmPassword())) {
 				model.addAttribute("error", "Password and Confirm Password are not match.");
+				return Views.USER_EDIT_PROFILE;
+			}
+
+			if (user.getPassword() != null
+					&& SecurityUtility.compareBcrypt(oldUserInfo.getPassword(), user.getPassword())) {
+				model.addAttribute("error", "You have used this password before. Please choose a different one.");
 				return Views.USER_EDIT_PROFILE;
 			}
 
@@ -163,7 +171,7 @@ public class UserController {
 				model.addAttribute("pageError", "Invalid phone number.");
 				return Views.USER_FORGOT_PASSWORD;
 			}
-			service.generateOTP(phoneNum);
+			otpService.generateOTP(phoneNum);
 			req.getSession().setAttribute("phoneNum", user.getPhone());
 			return "redirect:/user/validate_otp";
 		} catch (Exception e) {
@@ -178,38 +186,18 @@ public class UserController {
 
 	@PostMapping("/verification")
 	public String verify(@RequestParam String otp, HttpServletRequest req, Model model) {
-		String phoneNum = req.getSession().getAttribute("phoneNum").toString();
-		User user = rep.checkPhoneNumberExists(phoneNum);
-		if (!service.validateOtp(phoneNum, otp)) {
+		String phoneNumber = req.getSession().getAttribute("phoneNumber").toString();
+		User user = rep.checkPhoneNumberExists(phoneNumber);
+		if (!otpService.validateOtp(phoneNumber, otp)) {
 			model.addAttribute("error", "Invalid otp");
 			return Views.USER_VALIDATE;
-		} else if (service.isOtpExpired(phoneNum)) {
+		} else if (otpService.isOtpExpired(phoneNumber)) {
 			model.addAttribute("error", "OTP is expired.");
 			return Views.USER_VALIDATE;
 		}
 
-		req.getSession().setAttribute("username", user.getUsername());
-		return "redirect:/user/change_password";
-	}
-
-	@GetMapping("/changePassword")
-	public String change_password() {
-		return Views.USER_CHANGE_PASSWORD;
-	}
-
-	@PostMapping("/newPassword")
-	public String new_password(@RequestParam String password, @RequestParam String confirmPass,
-			@RequestParam String phoneNum, Model model) {
-		if (!password.equals(confirmPass)) {
-			model.addAttribute("error", "Password & confirm password are not match. Please try again.");
-			return Views.USER_CHANGE_PASSWORD;
-		}
-		String result = rep.changePass(phoneNum, password);
-		if (result.equals("success")) {
-			return "redirect:/user/login";
-		}
-		model.addAttribute("error", "Change password is failed due to some errors.");
-		return Views.USER_CHANGE_PASSWORD;
+		req.getSession().setAttribute("usrId", user.getId());
+		return "redirect:/user/accounts";
 	}
 
 	// -------------------- ACCOUNTS -------------------- //
@@ -218,7 +206,7 @@ public class UserController {
 	public String booking_history(int id, Model model) {
 		List<OrderDetail> detail = rep.getDetailList(id);
 		model.addAttribute("details", detail);
-		
+
 		return Views.USER_BOOKING_HISTORY;
 	}
 

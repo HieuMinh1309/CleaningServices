@@ -13,7 +13,7 @@ public class UserInterceptor implements HandlerInterceptor {
 		if (userId != null) {
 			return true;
 		}
-			response.sendRedirect("/user/login");
+		response.sendRedirect("/user/login");
 		return false;
 	}
 
